@@ -109,11 +109,11 @@ def plot(histories:dict[int,dict[str,list[dict]]])->None:
                 h=histories[seed][arm]
                 axis.plot([r["tokens"]/1e6 for r in h],
                           [r["validation_loss"] for r in h],
-                          color=COLORS[arm],linewidth=.9,alpha=.25)
+                          color=COLORS[arm],linewidth=.65,alpha=.14)
             tokens=[r["tokens"]/1e6 for r in histories[0][arm]]
             mean=[st.mean(histories[seed][arm][i]["validation_loss"] for seed in SEEDS)
                   for i in range(len(tokens))]
-            axis.plot(tokens,mean,color=COLORS[arm],linewidth=2.5,label=LABELS[arm])
+            axis.plot(tokens,mean,color=COLORS[arm],linewidth=1.45,alpha=.82,label=LABELS[arm])
     ax.set_xlim(0,100)
     ax.set_xlabel("TinyStories tokens (M)",color=TEXT)
     ax.set_ylabel("Validation loss",color=TEXT)

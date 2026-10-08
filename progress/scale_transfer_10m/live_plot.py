@@ -85,12 +85,12 @@ def draw(axes, curves: dict[tuple[int, str], list[tuple[int, float]]], alpha: fl
             for rows in available.values():
                 x = [tokens / 1_000_000 for tokens, _ in rows]
                 y = [loss for _, loss in rows]
-                axis.plot(x, smooth(y, alpha), color=color, linewidth=1.0, alpha=0.29)
+                axis.plot(x, smooth(y, alpha), color=color, linewidth=0.65, alpha=0.14)
             mean = shared_mean(available)
             if mean:
                 x = [tokens / 1_000_000 for tokens, _ in mean]
                 y = smooth([loss for _, loss in mean], alpha)
-                axis.plot(x, y, color=color, linewidth=2.3,
+                axis.plot(x, y, color=color, linewidth=1.45, alpha=0.82,
                           label=f"{LABELS[arm]} ({len(available)}/5)")
             shown += 1
         if shown:
