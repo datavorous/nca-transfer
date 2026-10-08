@@ -1,0 +1,29 @@
+[project]
+name = "sampleeff-downstream-pretraining"
+version = "0.1.0"
+description = "Language pretraining and downstream evaluation on non-NCA datasets"
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "sampleeff-shared==0.1.0",
+  "datasets==3.6.0",
+  "peft==0.15.2",
+  "tiktoken==0.11.0",
+  "tqdm>=4.67,<5",
+]
+
+[project.optional-dependencies]
+eval = [
+  "human-eval @ git+https://github.com/openai/human-eval.git@6d43fb980f9fee3c892a914eda09951f772ad10d",
+  "math-verify==0.8.0",
+]
+
+[tool.uv.sources]
+sampleeff-shared = { workspace = true }
+
+[build-system]
+requires = ["uv_build>=0.12.12,<0.13"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "sampleeff_downstream"

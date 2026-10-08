@@ -1,0 +1,16 @@
+[project]
+name = "sampleeff-workspace"
+version = "0.1.0"
+description = "Research workspace for NCA pre-pre-training"
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+dependencies = []
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[tool.uv.extra-build-dependencies]
+human-eval = ["setuptools<82"]
