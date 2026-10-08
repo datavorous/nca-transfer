@@ -16,7 +16,7 @@ PATTERN = re.compile(
     r"step=\d+/\d+ tokens=(?P<tokens>\d+) train_loss=(?P<loss>[-+\d.eE]+)"
 )
 SEED_PATTERN = re.compile(r"^SEED (?P<seed>[1-4]) ")
-COLORS = {"scratch": "#C5B5E8", "ordinary": "#F2AF99", "designed": "#91D7C7"}
+COLORS = {"scratch": "#A9D0F4", "ordinary": "#EFA7D0", "designed": "#F3D38A"}
 LABELS = {"scratch": "Scratch", "ordinary": "Ordinary NCA", "designed": "Designed NCA"}
 BACKGROUND = "#111722"
 PANEL = "#192230"

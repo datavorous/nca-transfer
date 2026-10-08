@@ -24,4 +24,4 @@ uv run --locked --all-packages python progress/scale_transfer_10m/live_plot.py
 
 Open `runs/scale-transfer-10m/live_loss.png` in the IDE. Add `--show` for a live Matplotlib window, or `--once` to save one snapshot and exit. The two panels keep NCA and TinyStories losses separate. Each seed's smoothed curve is faint; the bold curve averages only the token range reached by every currently available seed. The legend shows the number of seeds contributing to that mean. The plotter reads logs only and does not start or interrupt training.
 
-The live plot and final replication figure use the same dark background and pastel colors: lavender for Scratch, peach for Ordinary NCA, and mint for Designed NCA.
+The live plot and final replication figure use the same dark background and pastel colors: blue for Scratch, pink for Ordinary NCA, and gold for Designed NCA.
