@@ -137,6 +137,33 @@ def main() -> None:
     lines = ["# Seed-0 NCA dose diagnostic", "",
              "Frozen 10M-parameter model, corpora, transfer, tokenizer, TinyStories order, optimizer, full 100M-token LR schedule, and validation milestones. The 10M probes pause after a saved checkpoint on the original full schedule. The existing Scratch and 197.15M-label histories are reused. This is one model seed, not a replication.", "",
              "![Dose response](figures/" + response + ")", ""]
+    lines += ["## Dose comparison against the original 197.15M setting", "",
+              "Differences below are shorter-dose minus original 197.15M-dose validation metrics within the same NCA arm. Negative values mean the shorter dose measured lower loss or AUC. The Scratch comparator is shared across doses, so the same loss difference is the change in that arm's paired gap versus Scratch.", ""]
+    summary=[]
+    for arm in ARMS:
+        baseline=histories[arm][200]
+        for endpoint in (1_000_000,5_000_000,10_000_000,100_000_000):
+            observed=[(target,labels,at_or_none(histories[arm][target],endpoint))
+                      for target,labels in DOSES[:-1]]
+            available=[row for row in observed if row[2] is not None]
+            if not available:
+                continue
+            best=min(available,key=lambda row:(row[2],row[1]))
+            reference=calc.at(baseline,endpoint)
+            summary.append([arm.title(),f"{endpoint/1e6:g}M loss",
+                            f"{best[1]/1e6:.3f}M",fmt(best[2]),fmt(reference),
+                            f"{best[2]-reference:+.5f}"])
+        for endpoint in (1_000_000,5_000_000,10_000_000):
+            observed=[(target,labels,auc_or_none(histories[arm][target],endpoint))
+                      for target,labels in DOSES[:-1]]
+            available=[row for row in observed if row[2] is not None]
+            best=min(available,key=lambda row:(row[2],row[1]))
+            reference=calc.auc(baseline,0,endpoint)
+            summary.append([arm.title(),f"0–{endpoint/1e6:g}M AUC",
+                            f"{best[1]/1e6:.3f}M",fmt(best[2]),fmt(reference),
+                            f"{best[2]-reference:+.5f}"])
+    table(lines,["Arm","Metric","Best shorter NCA dose","Shorter value","197.15M value",
+                 "Shorter − 197.15M"],summary)
     for arm in ARMS:
         lines += [f"## {arm.title()} NCA", ""]
         lines += [f"![Trajectories](figures/{figure})" for figure in figures[arm]]
