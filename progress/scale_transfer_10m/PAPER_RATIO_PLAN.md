@@ -11,9 +11,13 @@ Both Ordinary and Designed NCA arms have a saved **step-0 checkpoint**, then the
 | 2M | 1,013 | 2,001,179 |
 | 4M | 2,025 | 4,001,087 |
 
-The new NCA runs resume their arm's original step-0 **model and optimizer**. Designed runs once through 4,001,087 labels and saves both 2M and 4M checkpoints. Ordinary NCA training is deferred until a Designed dose has been chosen, then stops at the matching 2,001,179 or 4,001,087 labels. Thus new scored NCA labels total **6,002,266–8,002,174** across both arms; no corpus is generated. Two extra NCA validation evaluations at these short checkpoints are recorded, but the original full-197M NCA optimizer schedule and update order remain intact.
+The new NCA runs resume their arm's original step-0 **model and optimizer**. Designed runs once through 4,001,087 labels and saves both 2M and 4M checkpoints. Ordinary NCA training is deferred until a Designed dose has been chosen, then stops at the matching 2,001,179 or 4,001,087 labels. Thus new scored NCA labels total **6,002,266–8,002,174** across both arms; no corpus is generated. The short-dose saves are **checkpoint-only**: the original NCA validation schedule, full-197M optimizer schedule, and update order remain intact.
 
 There are **three new downstream branches**: Designed 2M, Designed 4M, and one matched-dose Ordinary. The two Designed branches first run to the existing 10,000,384-token checkpoint on the unchanged 100M-token optimizer schedule. One or both then resume to the full 100M TinyStories tokens; the one Ordinary control runs to the same full horizon. Scratch is reused. Completed seed-0 timings imply roughly **2.6–3.7 hours** including continuations, plus small startup costs. All runs execute sequentially on the shared MPS device.
+
+## Transfer-rule audit
+
+The shared transfer path loads the saved random **language** initialization, then replaces only the Transformer-body tensors with the NCA checkpoint. It excludes `input_proj.*` and `output_proj.*` from NCA loading. A direct comparison of the completed seed-0 Designed transfer at downstream step 0 found all three language embedding/head tensors equal to the language initialization, all 73 body tensors equal to the NCA checkpoint, and none of those body tensors equal to the language initialization. The input and output weights are tied. All model parameters require gradients and the downstream Adam optimizer contains all of them. The paper-ratio branches call this same transfer path; the NCA embeddings and output head are discarded at transfer.
 
 ## Fixed selection and stopping rule
 

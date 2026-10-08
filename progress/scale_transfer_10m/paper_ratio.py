@@ -100,14 +100,25 @@ def downstream_config(reference: dict, arm: str, dose: int, checkpoint: Path) ->
 
 def pause_stage(name: str, config: dict, dataset, validation, model_config,
                 milestones: tuple[int, ...], physical: int, initial: Path,
-                nca_checkpoint: Path | None, stop_step: int, expected_tokens: int) -> None:
+                nca_checkpoint: Path | None, stop_step: int, expected_tokens: int,
+                checkpoint_only_labels: dict[int, int] | None = None) -> None:
     """Use the original training loop/schedule; pause before the update after its saved milestone."""
     original = train.update_step
 
     def guarded(state, data, positions, batch, mask):
         if state.step >= stop_step:
             raise PauseAfterCheckpoint
-        return original(state, data, positions, batch, mask)
+        next_step = state.step + 1
+        loss = original(state, data, positions, batch, mask)
+        if checkpoint_only_labels and next_step in checkpoint_only_labels:
+            state.step = next_step
+            directory = ROOT / name
+            saved = train.checkpoint(state, directory / "checkpoints")
+            train.atomic_json(directory / f"checkpoint_only_{next_step}.json", {
+                "step": next_step, "scored_labels": checkpoint_only_labels[next_step],
+                "checkpoint": str(saved.relative_to(directory)),
+                "validation_evaluation_added": False})
+        return loss
 
     train.update_step = guarded
     try:
@@ -120,8 +131,12 @@ def pause_stage(name: str, config: dict, dataset, validation, model_config,
     directory = ROOT / name
     checkpoint = directory / "checkpoints" / f"model_{stop_step}_iter.pth"
     assert checkpoint.is_file() and checkpoint.with_suffix(".json").is_file()
-    history = json.loads((directory / "metrics.json").read_text())["history"]
-    assert any(row["step"] == stop_step and row["tokens"] == expected_tokens for row in history)
+    if checkpoint_only_labels:
+        receipt = json.loads((directory / f"checkpoint_only_{stop_step}.json").read_text())
+        assert receipt["scored_labels"] == expected_tokens
+    else:
+        history = json.loads((directory / "metrics.json").read_text())["history"]
+        assert any(row["step"] == stop_step and row["tokens"] == expected_tokens for row in history)
     print(f"PAUSED {name} at {expected_tokens:,} scored tokens", flush=True)
     torch.mps.empty_cache()
 
@@ -158,11 +173,11 @@ def warm_nca(arm: str, dose: int, reference: dict) -> Path:
     else:
         print(f"NCA {arm}: resume original step-0 checkpoint to {NCA_ACTUAL[target_index]:,} labels",
               flush=True)
-        milestones = (0, *NCA_TARGETS, *frozen.NCA_MILESTONES[1:])
         pause_stage("nca/" + arm, nca_config(reference, arm), data, validation,
-                    frozen.NCA_MODEL, milestones, train.NCA_PHYSICAL_BATCH,
+                    frozen.NCA_MODEL, frozen.NCA_MILESTONES, train.NCA_PHYSICAL_BATCH,
                     frozen.ROOT / "config/base_random_init.pth", None,
-                    NCA_STEPS[target_index], NCA_ACTUAL[target_index])
+                    NCA_STEPS[target_index], NCA_ACTUAL[target_index],
+                    dict(zip(NCA_STEPS, NCA_ACTUAL)))
     del packed, data, validation
     torch.mps.empty_cache()
     return nca_checkpoint(arm, dose)
