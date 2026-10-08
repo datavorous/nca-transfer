@@ -99,7 +99,7 @@ def dose_response(h: dict[str, list[dict]]) -> str:
                               "designed_9", "designed_197") if name in h]
     x = [dose_labels(name) / 1e6 for name in keys]
     for axis, metric in zip(axes, ("loss", "AUC")):
-        axis_style(axis, "Scored NCA labels (M)",
+        axis_style(axis, "NCA switch dose (M scored labels)",
                    "TinyStories validation loss" if metric == "loss" else "Normalized AUC")
         for milestone, color in ((1_000_000, "#A9D0F4"),
                                  (5_000_000, "#EFAAD0"),
@@ -161,8 +161,19 @@ def main() -> None:
     response = dose_response(h)
     plots = trajectories(h, matched)
     lines = ["# Paper-ratio NCA pre-pretraining dose: seed 0", "",
-             "A fixed 100M-token TinyStories stream and ~10M-parameter model are used throughout. NCA corpora, selector, architecture, tokenizer, transfer operation, optimizer, and evaluation milestones are frozen. This is a single-seed diagnostic; no mechanism or population-level claim follows.", "",
-             f"![Designed dose response](figures/{response})", ""]
+             "A fixed 100M-token TinyStories stream and ~10M-parameter model are used throughout. NCA corpora, selector, architecture, tokenizer, transfer operation, optimizer, and evaluation milestones are frozen. The intervention is **NCA switch dose**: when training leaves the same frozen NCA optimization trajectory for language. The 2M and 4M checkpoints use the original full-197M NCA learning-rate schedule; they are not independently optimized short runs. Seed 0 selects a dose, so this is an exploratory single-seed diagnostic rather than held-out confirmation.", "",
+             "## Switch-time curve", "",
+             "Each column below holds downstream TinyStories tokens fixed and varies only the scored NCA labels before transfer. Values are validation loss; `—` means the saved curve has not reached that downstream checkpoint. The 9.87M and 197.15M arms are existing context runs.", "",
+             f"![NCA switch dose versus downstream validation loss](figures/{response})", ""]
+    switch_rows = []
+    for name in ("scratch", "designed_2", "designed_4", "designed_9", "designed_197"):
+        if name not in h:
+            continue
+        switch_rows.append([name.replace("_", " ").title(), f"{dose_labels(name):,}",
+                            *[fmt(at(h[name], token)) for token in
+                              (1_001_472, 5_001_216, 10_000_384, 100_000_000)]])
+    table(lines, ["Condition", "NCA switch dose", "1M text", "5M text", "10M text",
+                  "100M text"], switch_rows)
     for plot in plots:
         lines += [f"![Downstream trajectories](figures/{plot})", ""]
     lines += ["## Synthetic-to-language ratio", "",
@@ -230,7 +241,7 @@ def main() -> None:
         if path.is_file():
             lines += [f"## {title}", "", "```json", path.read_text().strip(), "```", ""]
     lines += ["## Limits", "",
-              "A paper-like NCA:text ratio is a tested regime, not an established optimum. The 2M and 4M checkpoints are one fixed NCA rule stream and one model initialization. Their comparison is exploratory until replicated. Downstream-token advantages omit synthetic pretraining compute and wall-clock cost. Designed-versus-Scratch and Designed-versus-matched-Ordinary are separate questions.", ""]
+              "A paper-like NCA:text ratio is a tested regime, not an established optimum. The 2M and 4M checkpoints are early stops on one fixed NCA rule stream, initialization, and full-stage optimizer schedule. Seed 0 is used to select the dose; confirmation would freeze it and test held-out model seeds 1–4, which this runner does not launch. Downstream-token advantages omit synthetic pretraining compute and wall-clock cost. Designed-versus-Scratch and Designed-versus-matched-Ordinary are separate questions. The observed switch-time curve alone does not establish a causal mechanism for any advantage.", ""]
     OUT.write_text("\n".join(lines))
     print(f"WROTE {OUT}",flush=True)
 
