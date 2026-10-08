@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/Users/datavorous/.local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>PYTHONUNBUFFERED</key><string>1</string>
+    </dict>
+    <key>KeepAlive</key><false/>
+    <key>Label</key><string>com.sampleeff.scale-paper-ratio-live-plot</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/datavorous/.local/bin/uv</string>
+        <string>run</string>
+        <string>--locked</string>
+        <string>--all-packages</string>
+        <string>python</string>
+        <string>progress/scale_transfer_10m/paper_ratio_live_plot.py</string>
+        <string>--interval</string>
+        <string>30</string>
+        <string>--until-run-ends</string>
+    </array>
+    <key>RunAtLoad</key><true/>
+    <key>StandardErrorPath</key>
+    <string>/Users/datavorous/Projects/SampleEff/runs/scale-transfer-10m/paper-ratio/plotter.log</string>
+    <key>StandardOutPath</key>
+    <string>/Users/datavorous/Projects/SampleEff/runs/scale-transfer-10m/paper-ratio/plotter.log</string>
+    <key>WorkingDirectory</key><string>/Users/datavorous/Projects/SampleEff</string>
+</dict>
+</plist>

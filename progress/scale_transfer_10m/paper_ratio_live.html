@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NCA switch-dose curves</title>
+<style>
+  html, body { margin: 0; min-height: 100%; background: #111722; }
+  img { display: block; width: min(100%, 1500px); height: auto; margin: auto; }
+</style>
+<img id="plot" src="../../runs/scale-transfer-10m/paper-ratio/live_loss.png" alt="Live NCA switch-dose validation curves">
+<script>
+  const plot = document.getElementById("plot");
+  const source = new URL(plot.getAttribute("src"), location.href);
+  setInterval(() => {
+    source.searchParams.set("updated", Date.now());
+    plot.src = source.href;
+  }, 10000);
+</script>
+</html>
