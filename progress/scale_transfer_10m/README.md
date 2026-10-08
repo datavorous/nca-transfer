@@ -13,3 +13,13 @@ The queue is `run.py`: prepare the 100M-token text stream, save one common text 
 The training code logs token counts, loss/PPL, per-interval tokens/sec, and elapsed stage time. `telemetry.csv` samples process CPU/RSS and battery voltage/current once a minute. On this Mac, `powermetrics` requires administrator privileges and is unavailable to the unprivileged overnight runner; the machine is on AC, so battery current is **not** total system power. `summary.py` will report energy-to-target only if a valid measured energy series is available; otherwise it reports `null` with the reason. No power value is fabricated.
 
 The full experiment is unattended and may run longer than one night. It launches exactly these three downstream conditions and starts no follow-up experiment.
+
+## Live loss plot
+
+The runner logs training loss every 100 optimizer steps. Poll it into an updating PNG:
+
+```sh
+uv run --locked --all-packages python progress/scale_transfer_10m/live_plot.py
+```
+
+Open `runs/scale-transfer-10m/live_loss.png` in the IDE. Add `--show` for a live Matplotlib window, or `--once` to save one snapshot and exit. The two panels keep NCA and TinyStories losses separate; colored lines are exponential moving averages and faint lines are the logged values. The plotter reads logs only and does not start or interrupt training.
