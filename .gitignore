@@ -19,9 +19,16 @@ __pycache__/
 .ipynb_checkpoints/
 /data/
 /outputs/
+# Large run outputs stay local; selected reports, metrics, and receipts are tracked explicitly.
 /runs/
 /wandb/
 *.pt
 *.pth
 *.ckpt
 *.safetensors
+*.npy
+*.npz
+*.parquet
+*.arrow
+*.sqlite
+*.sqlite3

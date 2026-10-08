@@ -1,0 +1,33 @@
+{
+  "context_length": 256,
+  "device": "mps",
+  "effective_batch": 8,
+  "estimated_seconds": {
+    "all_language": 510.78169081009145,
+    "all_nca": 491.84058730724695,
+    "one_language": 102.1563381620183,
+    "one_nca": 122.96014682681174,
+    "training_total": 1002.6222781173384
+  },
+  "language": {
+    "context_length": 256,
+    "effective_batch": 8,
+    "mps_allocated_bytes": 32493568,
+    "parameters": 1081177,
+    "physical_batch": 4,
+    "steps_per_second": 23.898725168946143,
+    "tokens_per_second": 48944.5891460017
+  },
+  "measured_at_utc": "2026-10-07T18:26:47.856840+00:00",
+  "mps_allocated_before_bytes": 0,
+  "mps_recommended_max_memory_bytes": 19069665280,
+  "nca": {
+    "context_length": 256,
+    "effective_batch": 8,
+    "mps_allocated_bytes": 23935488,
+    "parameters": 235822,
+    "physical_batch": 8,
+    "steps_per_second": 78.29059889392668,
+    "tokens_per_second": 160339.14653476185
+  }
+}

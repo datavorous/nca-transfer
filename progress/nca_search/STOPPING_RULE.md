@@ -1,0 +1,25 @@
+# Search decision and stopping rule
+
+**Current scope (2026-10-08).** The 45-run horizontal matrix completed, and its block-level analysis is in [BLOG_FINAL_ANALYSIS.md](BLOG_FINAL_ANALYSIS.md). The subsequently authorized bounded [horizontal dose sweep](../boosted_nca/SWEEP_PROTOCOL.md) selected top-10, the fixed top-5 gate failed, and the winner was validated through 10M on model seeds 0–4 using the same frozen corpus. See [SWEEP_RESULTS.md](../boosted_nca/SWEEP_RESULTS.md) and [SEED_VALIDATION.md](../boosted_nca/SEED_VALIDATION.md). **Stop this phase here.** Vertical, MI, lag-76, matched-copy and other mechanism branches remain excluded. The older gates below are historical and do not authorize launches.
+
+This is the bounded decision plan for the current 40–50 gzip NCA-data search. It was written after the exploratory iterations 01–06, the A/B/C seed-0 screen, all five block-A model seeds, and block-B seed 1 were visible, but before the remaining B/C model seeds or any vertical transfer result. The gates below are therefore prospective only for the still-unseen results. They are practical decisions, not confirmatory significance tests.
+
+## Finish the active horizontal-copy replication
+
+Complete the fixed high/unfiltered/low arms for model seeds 0–4 in each disjoint rule block A/B/C: **45 runs total**. The block is the independent corpus unit; model seeds describe initialization sensitivity. Compare high versus its own unfiltered and low arms at the same 1,001,472-token TinyStories checkpoint, and compare normalized 0–1M validation-loss AUC. Report all seed-level results, each block's mean, and the mean ± sample SD across the three block means. Do not pool 15 seeds as 15 independent corpora.
+
+Advance this horizontal-copy policy to the full 10M downstream curve only if all three block-mean `unfiltered − high` 1M endpoint gains are positive, at least two block-mean `low − high` gains are positive, and at least two block-mean `unfiltered − high` 0–1M AUC gains are positive. If it fails, retain the full table and label the seed-0 result unstable rather than tuning the copy threshold. If it passes, continue the saved arms under the unchanged 10M schedule and report both 0–10M AUC and final loss separately. A final advantage requires positive block-mean 10M gain in at least two of three blocks; a 1M-only gain is an early sample-efficiency result.
+
+## Test whether copying itself is the useful property
+
+The [controlled-copy protocol](CONTROLLED_COPY_PROTOCOL.md) prospectively matches high/low copy arms on gzip, lag-2 recurrence and transition MI in three new rule blocks. This is a mechanism-discrimination branch, not another opportunity to tune the horizontal-copy threshold. First require valid quotas, rule isolation, tensor contract, positive copy separation, and lag-2/MI standardized differences below 0.10 in every block. Run seed-0 paired 1M probes in all three complete blocks. Expand to seeds 1–4 only if at least two of the three block endpoint `low − high` gains are positive. A failed gate stops this matched branch and weakens any claim that copying, rather than its measured correlates, explains transfer. Even a positive matched result remains associational because other rule properties can move.
+
+## Test one distinct token-level target
+
+Finish and audit vertical lag-6 block D under the [frozen protocol](VERTICAL_LAG6_FROZEN_PROTOCOL.md). Run seed-0 1M high/unfiltered/low only after its data audit; use the fixed model and schedule. Expand to the frozen E/F rule blocks and model seeds 1–4 only if D high beats **both** controls at 1M and has lower 0–1M AUC than D unfiltered, with the visible lag-6 manipulation check passed. If that gate fails, stop the vertical branch without changing its cutoff. If it passes, require positive high-versus-unfiltered 1M mean gain in all three corpus blocks before a 10M continuation. Report lag-76 and horizontal-copy shifts as possible alternative explanations.
+
+## End of this search cycle
+
+After these fixed branches are resolved, stop adding correlation-driven selectors in this cycle and write a final evidence table with endpoints, AUC, seed/block variation, feature shifts, and limitations. Call a **useful selection principle** only if a policy improves the fixed 1M transfer endpoint across all three fresh corpus-block means and at least two block AUC means. State whether its benefit survives 10M. Call a **structure-specific mechanism** only if the matched or otherwise controlled contrast also retains the gain; do not infer it from a high feature correlation. If the gates fail, report an inconclusive or negative result and the next scientific question rather than searching arbitrary thresholds until something wins.
+
+Three corpus blocks give a robustness screen, not precise population inference; even 3/3 positive blocks yield two-sided exact sign `p = 0.25`. Keep the exploratory history and all failed probes visible. The user can set a different compute budget or expand this cycle later; these gates prevent the current cycle from becoming an unbounded selector search.

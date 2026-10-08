@@ -1,0 +1,19 @@
+{
+  "revision": "f54c09fd23315a6f9c86f9dc80f725de7d8f9c64",
+  "source": "https://huggingface.co/datasets/roneneldan/TinyStories",
+  "splits": {
+    "train": {
+      "rows_seen": 22572,
+      "sha256": "5853114d1587dc9067832ff8cb454faf951c4a3bb16b11d7801952fe606a34d7",
+      "tokens_saved": 5000001
+    },
+    "validation": {
+      "rows_seen": 1374,
+      "sha256": "851de2118d56178237f2b87270d02803433dd7fb6b4b5c841bb05afb4a5385e5",
+      "tokens_saved": 262145
+    }
+  },
+  "tokenizer": "gpt2",
+  "train_sha256": "5853114d1587dc9067832ff8cb454faf951c4a3bb16b11d7801952fe606a34d7",
+  "validation_sha256": "851de2118d56178237f2b87270d02803433dd7fb6b4b5c841bb05afb4a5385e5"
+}

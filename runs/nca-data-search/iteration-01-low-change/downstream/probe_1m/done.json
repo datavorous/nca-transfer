@@ -1,0 +1,12 @@
+{
+  "baseline_validation_loss": 5.985511479899287,
+  "completed_at_utc": "2026-10-08T07:14:57.906398+00:00",
+  "completed_steps": 489,
+  "config_sha256": "ae04a3e858f9cc7e18c7fb76966d0ff9e85f39b17a4fa3914339429ffa8afac6",
+  "final_checkpoint": "checkpoints/model_489_iter.pth",
+  "final_perplexity": 411.610972917814,
+  "final_validation_loss": 6.0200786627829075,
+  "full_schedule_steps": 4883,
+  "gain_vs_reference": -0.03456718288362026,
+  "tokens_consumed": 1001472
+}

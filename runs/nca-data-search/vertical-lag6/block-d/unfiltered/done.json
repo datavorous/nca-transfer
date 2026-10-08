@@ -1,0 +1,31 @@
+{
+  "arm": "unfiltered",
+  "attempts": 588864,
+  "block": "block-d",
+  "gzip_bin_counts": [
+    [
+      2913,
+      3544,
+      4034,
+      4559,
+      4925
+    ],
+    [
+      45,
+      42,
+      49,
+      57,
+      63
+    ]
+  ],
+  "gzip_ratio_mean": 0.4551637053960908,
+  "packed_sha256": "32dfa51fc925fb17b1b620b29c1a450c0aa3ec3ab2e988c9c4d651faf8a05021",
+  "reference_packed_sha256": "1ba5e8ce68c70faf19183170ac107959d5348e8db220898baa20bb9668d7ffbf",
+  "schema": "nca-vertical-lag6-arm-v1",
+  "selected": 20231,
+  "train_usable_tokens": 19715325,
+  "train_worlds": 19975,
+  "validation_worlds": 256,
+  "vertical_excess_mean": 0.0017889874012765724,
+  "vertical_excess_threshold": -0.0005878894767783627
+}

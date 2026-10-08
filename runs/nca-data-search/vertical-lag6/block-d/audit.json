@@ -1,0 +1,66 @@
+{
+  "attempts": 588864,
+  "block": "d",
+  "counts_by_arm_split_bin": [
+    [
+      [
+        2913,
+        3544,
+        4034,
+        4559,
+        4925
+      ],
+      [
+        45,
+        42,
+        49,
+        57,
+        63
+      ]
+    ],
+    [
+      [
+        2913,
+        3544,
+        4034,
+        4559,
+        4925
+      ],
+      [
+        45,
+        42,
+        49,
+        57,
+        63
+      ]
+    ],
+    [
+      [
+        2913,
+        3544,
+        4034,
+        4559,
+        4925
+      ],
+      [
+        45,
+        42,
+        49,
+        57,
+        63
+      ]
+    ]
+  ],
+  "earlier_rule_overlap": 0,
+  "feature_rechecks": 238,
+  "packed_sha256_by_arm": {
+    "high": "241782c69d7336f3f4322ebfe45d28a82f2edf93154f5563b13856f30ea9096b",
+    "low": "8c2347d03f8c9876eec9977b535411f0ba4662db1dbf3eb7fcd8e2a9d215798c",
+    "unfiltered": "32dfa51fc925fb17b1b620b29c1a450c0aa3ec3ab2e988c9c4d651faf8a05021"
+  },
+  "rejected_rule_overlap": 0,
+  "rule_index_sha256": "0fa852f1c4d2b6b86c9707880ec60abcd7e9c60a155ba8adee79953bccb5a609",
+  "sampling_config_sha256": "d0734b7f8d44f35bdb0f6f513321a0c58df96d6233166b763126ac04f3e5ab01",
+  "schema": "nca-vertical-lag6-audit-v1",
+  "selected_rules": 60693
+}

@@ -1,0 +1,74 @@
+{
+  "history": [
+    {
+      "elapsed_seconds": 0.0,
+      "learning_rate": 0.0,
+      "perplexity": 87284.95061628592,
+      "step": 0,
+      "tokens": 0,
+      "tokens_per_second": null,
+      "train_loss": null,
+      "validation_loss": 11.376933339983225
+    },
+    {
+      "elapsed_seconds": 13.670794249999744,
+      "learning_rate": 0.00029992861475581573,
+      "perplexity": 12702.269467921984,
+      "step": 123,
+      "tokens": 251904,
+      "tokens_per_second": 18426.442517972053,
+      "train_loss": 10.668426591206373,
+      "validation_loss": 9.449535954743624
+    },
+    {
+      "elapsed_seconds": 24.177503040999,
+      "learning_rate": 0.0002971715167859955,
+      "perplexity": 1505.0727508903728,
+      "step": 245,
+      "tokens": 501760,
+      "tokens_per_second": 23780.854856224865,
+      "train_loss": 8.259131412037084,
+      "validation_loss": 7.316596515476704
+    },
+    {
+      "elapsed_seconds": 41.989489915999,
+      "learning_rate": 0.00028003774416572575,
+      "perplexity": 416.2986223551459,
+      "step": 489,
+      "tokens": 1001472,
+      "tokens_per_second": 28054.979196401557,
+      "train_loss": 6.478258496425191,
+      "validation_loss": 6.031402844935656
+    },
+    {
+      "elapsed_seconds": 74.39377529099875,
+      "learning_rate": 0.0002076348038057638,
+      "perplexity": 213.01025745176196,
+      "step": 977,
+      "tokens": 2000704,
+      "tokens_per_second": 30836.523901665634,
+      "train_loss": 5.682702256030724,
+      "validation_loss": 5.361340321600437
+    },
+    {
+      "elapsed_seconds": 106.92774354100038,
+      "learning_rate": 0.0001114039393855303,
+      "perplexity": 146.3813504627371,
+      "step": 1465,
+      "tokens": 3000128,
+      "tokens_per_second": 30719.50139825748,
+      "train_loss": 5.1468010447064385,
+      "validation_loss": 4.986215205863118
+    },
+    {
+      "elapsed_seconds": 168.82176620799873,
+      "learning_rate": 0.0,
+      "perplexity": 125.91998302012982,
+      "step": 2442,
+      "tokens": 5000000,
+      "tokens_per_second": 32311.285064750686,
+      "train_loss": 4.869190355894387,
+      "validation_loss": 4.835646649822593
+    }
+  ]
+}

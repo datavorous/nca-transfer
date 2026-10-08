@@ -1,0 +1,31 @@
+{
+  "arm": "low",
+  "attempts": 577920,
+  "block": "block-a",
+  "gzip_bin_counts": [
+    [
+      2913,
+      3544,
+      4034,
+      4559,
+      4925
+    ],
+    [
+      45,
+      42,
+      49,
+      57,
+      63
+    ]
+  ],
+  "gzip_ratio_mean": 0.45517730856752653,
+  "packed_sha256": "5678f1bc06159ae2a39d98542b046ee289a89ceb070e2f2b6b9a8b41edae1d79",
+  "patch_copy_excess_mean": -0.006220759476498465,
+  "patch_copy_threshold": -0.000374227071,
+  "reference_packed_sha256": "1ba5e8ce68c70faf19183170ac107959d5348e8db220898baa20bb9668d7ffbf",
+  "schema": "nca-patch-replication-arm-v1",
+  "selected": 20231,
+  "train_usable_tokens": 19715325,
+  "train_worlds": 19975,
+  "validation_worlds": 256
+}

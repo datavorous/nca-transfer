@@ -1,0 +1,299 @@
+{
+  "band_boundaries": {
+    "20_30": "[0.20,0.30)",
+    "30_40": "[0.30,0.40)",
+    "40_50": "[0.40,0.50)",
+    "50_plus": "[0.50,infinity)",
+    "below_20": "[0,0.20)"
+  },
+  "measured_at_utc": "2026-10-08T04:38:28.241985+00:00",
+  "method": "Exact upstream/generation gzip ratio: remove start/end markers from each 27x38 packed trajectory, serialize its 972 row-major int32 patch IDs (3888 bytes), gzip.compress at level 9 with mtime=0, divide compressed byte count by 3888. This equals nca.analyze.gzip_ratio for a decoded trajectory.",
+  "original_40_50": {
+    "all_25k": {
+      "band_counts": {
+        "20_30": 0,
+        "30_40": 0,
+        "40_50": 25000,
+        "50_plus": 0,
+        "below_20": 0
+      },
+      "count": 25000,
+      "max": 0.49974279835390945,
+      "mean": 0.4552521193415638,
+      "median": 0.4580761316872428,
+      "min": 0.4002057613168724,
+      "quantiles": {
+        "p05": 0.40689300411522633,
+        "p25": 0.43209876543209874,
+        "p75": 0.47968106995884774,
+        "p95": 0.49588477366255146
+      },
+      "std": 0.02818253595480587
+    },
+    "selected_training_worlds": {
+      "band_counts": {
+        "20_30": 0,
+        "30_40": 0,
+        "40_50": 19975,
+        "50_plus": 0,
+        "below_20": 0
+      },
+      "count": 19975,
+      "max": 0.49974279835390945,
+      "mean": 0.4552136415375186,
+      "median": 0.45781893004115226,
+      "min": 0.4002057613168724,
+      "quantiles": {
+        "p05": 0.40689300411522633,
+        "p25": 0.43209876543209874,
+        "p75": 0.47968106995884774,
+        "p95": 0.49588477366255146
+      },
+      "std": 0.02821665848322321
+    }
+  },
+  "raw_receipt_check": {
+    "recomputed_ratio": 0.46733539094650206,
+    "recorded_ratio": 0.46733539094650206,
+    "row": 0
+  },
+  "shuffled_by_seed": {
+    "0": {
+      "all_25k": {
+        "band_counts": {
+          "20_30": 0,
+          "30_40": 27,
+          "40_50": 24267,
+          "50_plus": 706,
+          "below_20": 0
+        },
+        "count": 25000,
+        "max": 0.5100308641975309,
+        "mean": 0.45893205761316874,
+        "median": 0.46141975308641975,
+        "min": 0.39300411522633744,
+        "quantiles": {
+          "p05": 0.41358024691358025,
+          "p25": 0.43717849794238683,
+          "p75": 0.481738683127572,
+          "p95": 0.4976851851851852
+        },
+        "std": 0.026790507213900232
+      },
+      "fraction_still_in_source_band": 0.97068,
+      "mean_ratio_change_from_original": 0.0036799382716049384,
+      "packed_path": "/Users/datavorous/Projects/SampleEff/runs/1m-nca-transfer-v2/data/shuffled_nca/seed_0/packed.pt",
+      "selected_training_worlds": {
+        "band_counts": {
+          "20_30": 0,
+          "30_40": 21,
+          "40_50": 19390,
+          "50_plus": 564,
+          "below_20": 0
+        },
+        "count": 19975,
+        "max": 0.5100308641975309,
+        "mean": 0.45887987556462034,
+        "median": 0.4611625514403292,
+        "min": 0.39300411522633744,
+        "quantiles": {
+          "p05": 0.41358024691358025,
+          "p25": 0.43698559670781895,
+          "p75": 0.481738683127572,
+          "p95": 0.4976851851851852
+        },
+        "std": 0.02684324134555628
+      }
+    },
+    "1": {
+      "all_25k": {
+        "band_counts": {
+          "20_30": 0,
+          "30_40": 27,
+          "40_50": 24287,
+          "50_plus": 686,
+          "below_20": 0
+        },
+        "count": 25000,
+        "max": 0.5095164609053497,
+        "mean": 0.45892424897119344,
+        "median": 0.46141975308641975,
+        "min": 0.39454732510288065,
+        "quantiles": {
+          "p05": 0.41358024691358025,
+          "p25": 0.43724279835390945,
+          "p75": 0.481738683127572,
+          "p95": 0.4976851851851852
+        },
+        "std": 0.026775754650122108
+      },
+      "fraction_still_in_source_band": 0.97148,
+      "mean_ratio_change_from_original": 0.0036721296296296294,
+      "packed_path": "/Users/datavorous/Projects/SampleEff/runs/1m-nca-transfer-v2/data/shuffled_nca/seed_1/packed.pt",
+      "selected_training_worlds": {
+        "band_counts": {
+          "20_30": 0,
+          "30_40": 21,
+          "40_50": 19400,
+          "50_plus": 554,
+          "below_20": 0
+        },
+        "count": 19975,
+        "max": 0.5092592592592593,
+        "mean": 0.4588804421164316,
+        "median": 0.4611625514403292,
+        "min": 0.39454732510288065,
+        "quantiles": {
+          "p05": 0.41358024691358025,
+          "p25": 0.43724279835390945,
+          "p75": 0.48199588477366256,
+          "p95": 0.4976851851851852
+        },
+        "std": 0.02681780390289628
+      }
+    },
+    "2": {
+      "all_25k": {
+        "band_counts": {
+          "20_30": 0,
+          "30_40": 22,
+          "40_50": 24289,
+          "50_plus": 689,
+          "below_20": 0
+        },
+        "count": 25000,
+        "max": 0.5108024691358025,
+        "mean": 0.4589217798353909,
+        "median": 0.46141975308641975,
+        "min": 0.3963477366255144,
+        "quantiles": {
+          "p05": 0.41358024691358025,
+          "p25": 0.43724279835390945,
+          "p75": 0.48199588477366256,
+          "p95": 0.4976851851851852
+        },
+        "std": 0.0267863782343373
+      },
+      "fraction_still_in_source_band": 0.97156,
+      "mean_ratio_change_from_original": 0.00366966049382716,
+      "packed_path": "/Users/datavorous/Projects/SampleEff/runs/1m-nca-transfer-v2/data/shuffled_nca/seed_2/packed.pt",
+      "selected_training_worlds": {
+        "band_counts": {
+          "20_30": 0,
+          "30_40": 19,
+          "40_50": 19406,
+          "50_plus": 550,
+          "below_20": 0
+        },
+        "count": 19975,
+        "max": 0.5108024691358025,
+        "mean": 0.45887660501552874,
+        "median": 0.4611625514403292,
+        "min": 0.3963477366255144,
+        "quantiles": {
+          "p05": 0.4133230452674897,
+          "p25": 0.43698559670781895,
+          "p75": 0.48199588477366256,
+          "p95": 0.4976851851851852
+        },
+        "std": 0.02683417047777618
+      }
+    },
+    "3": {
+      "all_25k": {
+        "band_counts": {
+          "20_30": 0,
+          "30_40": 36,
+          "40_50": 24247,
+          "50_plus": 717,
+          "below_20": 0
+        },
+        "count": 25000,
+        "max": 0.5123456790123457,
+        "mean": 0.4589218930041153,
+        "median": 0.46141975308641975,
+        "min": 0.3958333333333333,
+        "quantiles": {
+          "p05": 0.41358024691358025,
+          "p25": 0.43724279835390945,
+          "p75": 0.481738683127572,
+          "p95": 0.4976851851851852
+        },
+        "std": 0.02679503448509532
+      },
+      "fraction_still_in_source_band": 0.96988,
+      "mean_ratio_change_from_original": 0.003669773662551441,
+      "packed_path": "/Users/datavorous/Projects/SampleEff/runs/1m-nca-transfer-v2/data/shuffled_nca/seed_3/packed.pt",
+      "selected_training_worlds": {
+        "band_counts": {
+          "20_30": 0,
+          "30_40": 29,
+          "40_50": 19364,
+          "50_plus": 582,
+          "below_20": 0
+        },
+        "count": 19975,
+        "max": 0.5123456790123457,
+        "mean": 0.4588591706711579,
+        "median": 0.4611625514403292,
+        "min": 0.3958333333333333,
+        "quantiles": {
+          "p05": 0.41358024691358025,
+          "p25": 0.43698559670781895,
+          "p75": 0.48199588477366256,
+          "p95": 0.4976851851851852
+        },
+        "std": 0.026846347672465146
+      }
+    },
+    "4": {
+      "all_25k": {
+        "band_counts": {
+          "20_30": 0,
+          "30_40": 29,
+          "40_50": 24308,
+          "50_plus": 663,
+          "below_20": 0
+        },
+        "count": 25000,
+        "max": 0.5113168724279835,
+        "mean": 0.4589343004115226,
+        "median": 0.46141975308641975,
+        "min": 0.39531893004115226,
+        "quantiles": {
+          "p05": 0.41358024691358025,
+          "p25": 0.43698559670781895,
+          "p75": 0.481738683127572,
+          "p95": 0.4976851851851852
+        },
+        "std": 0.02680780694119909
+      },
+      "fraction_still_in_source_band": 0.97232,
+      "mean_ratio_change_from_original": 0.003682181069958848,
+      "packed_path": "/Users/datavorous/Projects/SampleEff/runs/1m-nca-transfer-v2/data/shuffled_nca/seed_4/packed.pt",
+      "selected_training_worlds": {
+        "band_counts": {
+          "20_30": 0,
+          "30_40": 23,
+          "40_50": 19411,
+          "50_plus": 541,
+          "below_20": 0
+        },
+        "count": 19975,
+        "max": 0.510545267489712,
+        "mean": 0.4588809442873551,
+        "median": 0.4611625514403292,
+        "min": 0.39737654320987653,
+        "quantiles": {
+          "p05": 0.4133230452674897,
+          "p25": 0.43698559670781895,
+          "p75": 0.481738683127572,
+          "p95": 0.4976851851851852
+        },
+        "std": 0.02685359197844992
+      }
+    }
+  },
+  "source_packed": "/Users/datavorous/Projects/SampleEff/runs/1m-nca-transfer-v2/data/nca/40_50/packed.pt",
+  "training_selection": "first 19,975 train split worlds, same as v2 pre-pretraining"
+}

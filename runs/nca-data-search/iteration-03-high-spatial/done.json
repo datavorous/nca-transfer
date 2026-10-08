@@ -1,0 +1,34 @@
+{
+  "attempts": 188800,
+  "change_fraction_max": 0.9885149572649573,
+  "change_fraction_mean": 0.7085093848739368,
+  "change_fraction_min": 0.2948717948717949,
+  "gzip_bin_counts": [
+    [
+      2913,
+      3544,
+      4034,
+      4559,
+      4925
+    ],
+    [
+      45,
+      42,
+      49,
+      57,
+      63
+    ]
+  ],
+  "gzip_ratio_mean": 0.45522315252658946,
+  "packed_sha256": "da86c02e1e1a99fe65cb717f25a9eeec8fe5af53a99b7b8965e7adc6cceeea75",
+  "reference_packed_sha256": "1ba5e8ce68c70faf19183170ac107959d5348e8db220898baa20bb9668d7ffbf",
+  "schema": "nca-high-spatial-search-v1",
+  "selected": 20231,
+  "spatial_excess_agreement_max": 0.25003956948401385,
+  "spatial_excess_agreement_mean": 0.03323503863551041,
+  "spatial_excess_agreement_min": -0.0011439178105844827,
+  "spatial_threshold": -0.001144367464,
+  "train_usable_tokens": 19715325,
+  "train_worlds": 19975,
+  "validation_worlds": 256
+}

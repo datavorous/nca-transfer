@@ -1,0 +1,65 @@
+{
+  "attempts": 2916352,
+  "contract": "int32 [20231,1026], original markers/masks, 19715325 usable train labels, pack_one spot checks",
+  "counts_by_tier": [
+    [
+      [
+        2913,
+        3544,
+        4034,
+        4559,
+        4925
+      ],
+      [
+        45,
+        42,
+        49,
+        57,
+        63
+      ]
+    ],
+    [
+      [
+        2913,
+        3544,
+        4034,
+        4559,
+        4925
+      ],
+      [
+        45,
+        42,
+        49,
+        57,
+        63
+      ]
+    ]
+  ],
+  "cross_tier_rule_overlap": 8121,
+  "cutoffs_by_gzip_bin": [
+    [
+      0.013787809437,
+      0.009925705543,
+      0.006992070455,
+      0.004674553831,
+      0.003439879976
+    ],
+    [
+      0.034107767225,
+      0.025746229122,
+      0.017753705187,
+      0.012177637072,
+      0.008144630498
+    ]
+  ],
+  "packed_sha256_by_tier": {
+    "top_10": "a992f78a255b7c896eee6a8e77fad57631fc866239af8ab1b05edb1ea9573824",
+    "top_25": "9f391d730aa032b14f62ac965ff0b01f30666da2c98890619094a3660dac1025"
+  },
+  "sampling_config_sha256": "6da577c88ed95fc6a5b2abf3c1593f738f936f78b295f2f4febff77e37d80379",
+  "schema": "nca-boosted-sweep-audit-v1",
+  "selected_by_tier": {
+    "top_10": 20231,
+    "top_25": 20231
+  }
+}

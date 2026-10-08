@@ -1,0 +1,31 @@
+{
+  "attempts": 266048,
+  "change_fraction_max": 0.9885149572649573,
+  "change_fraction_mean": 0.7945278111529779,
+  "change_fraction_min": 0.7086004273504274,
+  "change_threshold": 0.7086004273504274,
+  "gzip_bin_counts": [
+    [
+      2913,
+      3544,
+      4034,
+      4559,
+      4925
+    ],
+    [
+      45,
+      42,
+      49,
+      57,
+      63
+    ]
+  ],
+  "gzip_ratio_mean": 0.45548078642298734,
+  "packed_sha256": "4013b63a79900b700d4f4a14a4c7d46dbd5787b2dad8dd8347f3ee8164bd70d2",
+  "reference_packed_sha256": "1ba5e8ce68c70faf19183170ac107959d5348e8db220898baa20bb9668d7ffbf",
+  "schema": "nca-high-change-search-v1",
+  "selected": 20231,
+  "train_usable_tokens": 19715325,
+  "train_worlds": 19975,
+  "validation_worlds": 256
+}

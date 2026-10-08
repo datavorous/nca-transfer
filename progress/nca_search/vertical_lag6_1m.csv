@@ -1,0 +1,1 @@
+block,arm,seed,nca_tokens,tinystories_tokens,gzip_mean,vertical_excess_mean,reference_validation_loss,validation_loss,perplexity,auc_0_1m,nca_validation_loss_all_scored,nca_validation_loss_patch,nca_validation_loss_visible_lag6,nca_visible_lag6_target_count

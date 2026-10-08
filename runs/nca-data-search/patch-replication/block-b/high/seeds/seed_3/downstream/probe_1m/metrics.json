@@ -1,0 +1,36 @@
+{
+  "history": [
+    {
+      "learning_rate": 0.0,
+      "perplexity": 96719.60615310306,
+      "step": 0,
+      "tokens": 0,
+      "train_loss": null,
+      "validation_loss": 11.479571413248777
+    },
+    {
+      "learning_rate": 0.0002999828837879015,
+      "perplexity": 16399.62836933799,
+      "step": 123,
+      "tokens": 251904,
+      "train_loss": 10.803222508934455,
+      "validation_loss": 9.705013953149319
+    },
+    {
+      "learning_rate": 0.0002993202206752948,
+      "perplexity": 1830.9969246951532,
+      "step": 245,
+      "tokens": 501760,
+      "train_loss": 8.521894155955705,
+      "validation_loss": 7.51261586509645
+    },
+    {
+      "learning_rate": 0.0002951303751734712,
+      "perplexity": 409.5985794885167,
+      "step": 489,
+      "tokens": 1001472,
+      "train_loss": 6.5449226860140195,
+      "validation_loss": 6.015177605673671
+    }
+  ]
+}

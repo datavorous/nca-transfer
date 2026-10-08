@@ -1,0 +1,12 @@
+{
+  "history": [
+    {
+      "learning_rate": 0.0,
+      "perplexity": 93661.77111527388,
+      "step": 0,
+      "tokens": 0,
+      "train_loss": null,
+      "validation_loss": 11.447445392608643
+    }
+  ]
+}

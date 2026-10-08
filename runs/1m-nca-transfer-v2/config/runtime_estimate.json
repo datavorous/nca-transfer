@@ -1,0 +1,23 @@
+{
+  "source": "measured completed v1 stage runtimes, including v1 evaluation/checkpoint overhead",
+  "source_nca_runtime_seconds": [
+    425.7569715010104,
+    305.996873125001,
+    310.1590990000004,
+    311.054837083997
+  ],
+  "source_downstream_5m_runtime_seconds": [
+    169.4152898329994,
+    169.22165533299994,
+    168.91830108299837,
+    168.9830066249997,
+    169.2434074590019
+  ],
+  "nca_stage_estimate_seconds": 310.6069680419987,
+  "downstream_10m_stage_estimate_seconds": 338.4433106659999,
+  "nca_stages": 25,
+  "downstream_stages": 30,
+  "training_estimate_seconds": 17918.473521029962,
+  "training_estimate_hours": 4.977353755841656,
+  "caveat": "10M downstream timing extrapolates 5M measured runtime; evaluation, disk and thermal variation can change total."
+}

@@ -1,0 +1,185 @@
+{
+  "block": "c",
+  "full_gzip": {
+    "high": {
+      "mean": 0.4551573614871689,
+      "median": 0.45781893004115226,
+      "n": 20231
+    },
+    "low": {
+      "mean": 0.45522755130912856,
+      "median": 0.4575617283950617,
+      "n": 20231
+    },
+    "unfiltered": {
+      "mean": 0.4552304499288364,
+      "median": 0.4575617283950617,
+      "n": 20231
+    }
+  },
+  "sampled_features": {
+    "high": {
+      "change": {
+        "mean": 0.7005093433006413,
+        "median": 0.700053418803419
+      },
+      "color_entropy": {
+        "mean": 2.057694478578001,
+        "median": 2.0705621747112684
+      },
+      "context_repeat_256": {
+        "mean": 0.4743022464261402,
+        "median": 0.4700854700854701
+      },
+      "gzip": {
+        "mean": 0.45485617951612706,
+        "median": 0.4575617283950617
+      },
+      "horizontal_copy_excess": {
+        "mean": 0.012633394845425298,
+        "median": 0.006923412713548885
+      },
+      "lag2_recurrence": {
+        "mean": 0.33445318474817004,
+        "median": 0.32805555555555554
+      },
+      "late_patch_novelty": {
+        "mean": 0.20391007198611263,
+        "median": 0.2006172839506173
+      },
+      "patch_entropy": {
+        "mean": 7.248599591246454,
+        "median": 7.298585455312751
+      },
+      "rare_patch_mass": {
+        "mean": 0.27048812168445074,
+        "median": 0.2726337448559671
+      },
+      "spatial_excess_agreement": {
+        "mean": -0.0006208000001018672,
+        "median": 0.0020324325879881866
+      },
+      "temporal_copy_excess": {
+        "mean": 0.007944586075987227,
+        "median": -0.002423763337483442
+      },
+      "transition_mutual_info": {
+        "mean": 0.172494241648847,
+        "median": 0.14109628066794033
+      },
+      "vertical_patch_copy": {
+        "mean": 0.01837648858297826,
+        "median": 0.009876543209876543
+      }
+    },
+    "low": {
+      "change": {
+        "mean": 0.7053679856961568,
+        "median": 0.7128739316239316
+      },
+      "color_entropy": {
+        "mean": 2.044956542477554,
+        "median": 2.055697568454437
+      },
+      "context_repeat_256": {
+        "mean": 0.47586436561362816,
+        "median": 0.4732905982905983
+      },
+      "gzip": {
+        "mean": 0.4549148528513218,
+        "median": 0.45781893004115226
+      },
+      "horizontal_copy_excess": {
+        "mean": -0.006230088462236915,
+        "median": -0.004950562188232402
+      },
+      "lag2_recurrence": {
+        "mean": 0.3000655522779416,
+        "median": 0.29777777777777775
+      },
+      "late_patch_novelty": {
+        "mean": 0.20062335360598224,
+        "median": 0.19753086419753085
+      },
+      "patch_entropy": {
+        "mean": 7.264439269299092,
+        "median": 7.3070590709935015
+      },
+      "rare_patch_mass": {
+        "mean": 0.2603801222833234,
+        "median": 0.2623456790123457
+      },
+      "spatial_excess_agreement": {
+        "mean": -0.0004788811293509193,
+        "median": -0.0010369003424558765
+      },
+      "temporal_copy_excess": {
+        "mean": 0.0025386492642195924,
+        "median": -0.0033662994814156275
+      },
+      "transition_mutual_info": {
+        "mean": 0.15890501554639969,
+        "median": 0.13371516726494193
+      },
+      "vertical_patch_copy": {
+        "mean": 0.01354140111924445,
+        "median": 0.008641975308641974
+      }
+    },
+    "unfiltered": {
+      "change": {
+        "mean": 0.7073382308448679,
+        "median": 0.7123397435897437
+      },
+      "color_entropy": {
+        "mean": 2.0541351281026805,
+        "median": 2.069694773332143
+      },
+      "context_repeat_256": {
+        "mean": 0.4721844036003328,
+        "median": 0.4700854700854701
+      },
+      "gzip": {
+        "mean": 0.455631072184388,
+        "median": 0.4575617283950617
+      },
+      "horizontal_copy_excess": {
+        "mean": 0.0022648878363318863,
+        "median": -0.0008840743707433261
+      },
+      "lag2_recurrence": {
+        "mean": 0.31423249207909976,
+        "median": 0.3111111111111111
+      },
+      "late_patch_novelty": {
+        "mean": 0.20423176372045596,
+        "median": 0.2006172839506173
+      },
+      "patch_entropy": {
+        "mean": 7.27220510159645,
+        "median": 7.310693170828227
+      },
+      "rare_patch_mass": {
+        "mean": 0.2675281530848012,
+        "median": 0.2674897119341564
+      },
+      "spatial_excess_agreement": {
+        "mean": -0.0019253364194913394,
+        "median": -0.0017968142968142753
+      },
+      "temporal_copy_excess": {
+        "mean": 0.004094772204728219,
+        "median": -0.003039759547941262
+      },
+      "transition_mutual_info": {
+        "mean": 0.16593371404947416,
+        "median": 0.1434166777714918
+      },
+      "vertical_patch_copy": {
+        "mean": 0.015432705730968596,
+        "median": 0.009876543209876543
+      }
+    }
+  },
+  "sampled_worlds_per_arm": 1017
+}

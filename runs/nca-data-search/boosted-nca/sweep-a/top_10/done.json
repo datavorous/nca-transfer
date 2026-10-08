@@ -1,0 +1,40 @@
+{
+  "anchor_rule_overlap": 4053,
+  "attempts": 2916352,
+  "cutoffs_by_bin": [
+    0.034107767225,
+    0.025746229122,
+    0.017753705187,
+    0.012177637072,
+    0.008144630498
+  ],
+  "gzip_bin_counts": [
+    [
+      2913,
+      3544,
+      4034,
+      4559,
+      4925
+    ],
+    [
+      45,
+      42,
+      49,
+      57,
+      63
+    ]
+  ],
+  "gzip_ratio_mean": 0.4543685428160711,
+  "packed_sha256": "a992f78a255b7c896eee6a8e77fad57631fc866239af8ab1b05edb1ea9573824",
+  "patch_copy_excess_mean": 0.033562145713028554,
+  "sampling_config_sha256": "6da577c88ed95fc6a5b2abf3c1593f738f936f78b295f2f4febff77e37d80379",
+  "schema": "nca-boosted-sweep-arm-v1",
+  "seed": 101,
+  "selected": 20231,
+  "source_arm": "high",
+  "source_block": "a",
+  "tier": "top_10",
+  "train_usable_tokens": 19715325,
+  "train_worlds": 19975,
+  "validation_worlds": 256
+}

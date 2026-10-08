@@ -1,0 +1,94 @@
+{
+  "history": [
+    {
+      "elapsed_seconds": 0.0,
+      "learning_rate": 0.0,
+      "perplexity": 76916.43011378715,
+      "step": 0,
+      "tokens": 0,
+      "tokens_per_second": null,
+      "train_loss": null,
+      "validation_loss": 11.250474788248539
+    },
+    {
+      "elapsed_seconds": 14.006721958001435,
+      "learning_rate": 0.0002999828837879015,
+      "perplexity": 17821.226259870367,
+      "step": 123,
+      "tokens": 251904,
+      "tokens_per_second": 17984.515482098755,
+      "train_loss": 10.767181477895598,
+      "validation_loss": 9.788145512342453
+    },
+    {
+      "elapsed_seconds": 25.09894825000083,
+      "learning_rate": 0.0002993202206752948,
+      "perplexity": 2737.4292924168794,
+      "step": 245,
+      "tokens": 501760,
+      "tokens_per_second": 22525.51983870319,
+      "train_loss": 8.78443799448795,
+      "validation_loss": 7.914774544537067
+    },
+    {
+      "elapsed_seconds": 44.454437207998126,
+      "learning_rate": 0.0002951303751734712,
+      "perplexity": 488.5460399823593,
+      "step": 489,
+      "tokens": 1001472,
+      "tokens_per_second": 25817.748137679937,
+      "train_loss": 6.867763725460553,
+      "validation_loss": 6.191433714702725
+    },
+    {
+      "elapsed_seconds": 79.10613883299811,
+      "learning_rate": 0.0002757943245057488,
+      "perplexity": 211.17374266023918,
+      "step": 977,
+      "tokens": 2000896,
+      "tokens_per_second": 28842.084595008004,
+      "train_loss": 5.702649104302047,
+      "validation_loss": 5.352681219577789
+    },
+    {
+      "elapsed_seconds": 112.74121079200268,
+      "learning_rate": 0.00024364446591278928,
+      "perplexity": 131.51517254965077,
+      "step": 1465,
+      "tokens": 3000320,
+      "tokens_per_second": 29713.84763890466,
+      "train_loss": 5.095648368851084,
+      "validation_loss": 4.8791222255676985
+    },
+    {
+      "elapsed_seconds": 177.566238833002,
+      "learning_rate": 0.00015487606439967746,
+      "perplexity": 83.69577910142694,
+      "step": 2442,
+      "tokens": 5001088,
+      "tokens_per_second": 30864.18296551496,
+      "train_loss": 4.614961163048369,
+      "validation_loss": 4.4271885473281145
+    },
+    {
+      "elapsed_seconds": 257.03407074999996,
+      "learning_rate": 4.563678511409159e-05,
+      "perplexity": 71.31121072617704,
+      "step": 3663,
+      "tokens": 7501696,
+      "tokens_per_second": 31466.965833991682,
+      "train_loss": 4.3218379959915625,
+      "validation_loss": 4.267053548246622
+    },
+    {
+      "elapsed_seconds": 336.7738118330017,
+      "learning_rate": 0.0,
+      "perplexity": 69.51591412661688,
+      "step": 4883,
+      "tokens": 10000000,
+      "tokens_per_second": 31330.769432368495,
+      "train_loss": 4.233710841468123,
+      "validation_loss": 4.241555706597865
+    }
+  ]
+}

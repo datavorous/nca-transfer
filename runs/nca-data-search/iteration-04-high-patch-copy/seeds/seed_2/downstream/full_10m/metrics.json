@@ -1,0 +1,76 @@
+{
+  "history": [
+    {
+      "learning_rate": 0.0,
+      "perplexity": 82246.8947647375,
+      "step": 0,
+      "tokens": 0,
+      "train_loss": null,
+      "validation_loss": 11.31748091429472
+    },
+    {
+      "learning_rate": 0.0002999828837879015,
+      "perplexity": 14843.291553996067,
+      "step": 123,
+      "tokens": 251904,
+      "train_loss": 10.667885439182685,
+      "validation_loss": 9.605303294956684
+    },
+    {
+      "learning_rate": 0.0002993202206752948,
+      "perplexity": 1458.1031688156784,
+      "step": 245,
+      "tokens": 501760,
+      "train_loss": 8.332449743005096,
+      "validation_loss": 7.2848916705697775
+    },
+    {
+      "learning_rate": 0.0002951303751734712,
+      "perplexity": 365.8768584187449,
+      "step": 489,
+      "tokens": 1001472,
+      "train_loss": 6.365596384298606,
+      "validation_loss": 5.902296824380755
+    },
+    {
+      "learning_rate": 0.0002757943245057488,
+      "perplexity": 176.44012447539612,
+      "step": 977,
+      "tokens": 2000896,
+      "train_loss": 5.497605150351759,
+      "validation_loss": 5.172981580719352
+    },
+    {
+      "learning_rate": 0.00024364446591278928,
+      "perplexity": 111.96536810922805,
+      "step": 1465,
+      "tokens": 3000320,
+      "train_loss": 4.924526017708857,
+      "validation_loss": 4.718189610168338
+    },
+    {
+      "learning_rate": 0.00015487606439967746,
+      "perplexity": 75.043637204021,
+      "step": 2442,
+      "tokens": 5001088,
+      "train_loss": 4.480530384375105,
+      "validation_loss": 4.318069773726165
+    },
+    {
+      "learning_rate": 4.563678511409159e-05,
+      "perplexity": 64.81567797231911,
+      "step": 3663,
+      "tokens": 7501696,
+      "train_loss": 4.218658453807003,
+      "validation_loss": 4.171547518111765
+    },
+    {
+      "learning_rate": 0.0,
+      "perplexity": 63.33199612005826,
+      "step": 4883,
+      "tokens": 10000000,
+      "train_loss": 4.137610202734588,
+      "validation_loss": 4.148390669375658
+    }
+  ]
+}

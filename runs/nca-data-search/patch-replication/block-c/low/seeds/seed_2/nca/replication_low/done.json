@@ -1,0 +1,10 @@
+{
+  "completed_at_utc": "2026-10-08T11:54:08.635134+00:00",
+  "completed_steps": 9988,
+  "config_sha256": "3d9d6213ad5ea853d89ee4d93b2c556d684211d2e99cd2ace5318455abfbe1b2",
+  "final_checkpoint": "checkpoints/model_9988_iter.pth",
+  "final_perplexity": 512.517561136216,
+  "final_validation_loss": 6.239334976057151,
+  "runtime_seconds": 142.62600691700936,
+  "tokens_consumed": 19715325
+}

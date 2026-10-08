@@ -1,0 +1,12 @@
+{
+  "block": "b",
+  "primary_metric": "unfiltered_minus_high_tinystories_validation_loss_at_1001472_tokens_seed0",
+  "schema": "nca-patch-replication-protocol-lock-v1",
+  "script_sha256": {
+    "progress/nca_search/audit_patch_replication.py": "93697aed41d7fd07ab659ad0a0b2f6c1a91a6e7cd3ff9e655f8be73a0e3f67ad",
+    "progress/nca_search/probe_low_change.py": "442758c4220315f1506fe3aab1210d14dc4306d58da7f8c0b58204135d834f36",
+    "progress/nca_search/sample_patch_replication.py": "1552a02779fdc03cc2f593bd0b9e62d0485fa2a4ca76a11c0cd5ac4ed44b1a58"
+  },
+  "stream_seed": 202,
+  "threshold": -0.000374227071
+}

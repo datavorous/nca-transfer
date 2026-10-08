@@ -1,0 +1,60 @@
+{
+  "attempts": 572352,
+  "block": "b",
+  "counts_by_arm_split_bin": [
+    [
+      [
+        2913,
+        3544,
+        4034,
+        4559,
+        4925
+      ],
+      [
+        45,
+        42,
+        49,
+        57,
+        63
+      ]
+    ],
+    [
+      [
+        2913,
+        3544,
+        4034,
+        4559,
+        4925
+      ],
+      [
+        45,
+        42,
+        49,
+        57,
+        63
+      ]
+    ],
+    [
+      [
+        2913,
+        3544,
+        4034,
+        4559,
+        4925
+      ],
+      [
+        45,
+        42,
+        49,
+        57,
+        63
+      ]
+    ]
+  ],
+  "earlier_rule_overlap": 0,
+  "feature_rechecks": 238,
+  "rule_index_sha256": "80136f1789b3e4d25cba43f98324945d4e960c3a3d7dcef88f5d137ca62acf00",
+  "sampling_config_sha256": "d4d714402b2cee1339828212e1db4b7903ab4bc69f78cc042c9daa1cd6a1ffe0",
+  "schema": "nca-patch-replication-audit-v1",
+  "selected_rules": 60693
+}

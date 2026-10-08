@@ -1,0 +1,104 @@
+{
+  "schema": "sampleeff-boosted-nca-10m-template-v1",
+  "status": "design_only_not_executable",
+  "selected_tier": null,
+  "output_root": "runs/nca-data-search/boosted-nca/final-10m",
+  "resume": {
+    "winning_probe_checkpoint": null,
+    "source_step": 489,
+    "source_scored_tinystories_tokens": 1001472,
+    "restore_model_and_optimizer": true,
+    "tier_probe_roots": {
+      "top_50_anchor": "runs/nca-data-search/patch-replication/block-a/high/seeds/seed_0/downstream/probe_1m",
+      "top_25": "runs/nca-data-search/boosted-nca/sweep-a/top_25/seeds/seed_0/downstream/probe_1m",
+      "top_10": "runs/nca-data-search/boosted-nca/sweep-a/top_10/seeds/seed_0/downstream/probe_1m",
+      "top_5": "runs/nca-data-search/boosted-nca/sweep-a/top_5/seeds/seed_0/downstream/probe_1m"
+    }
+  },
+  "generator": {
+    "rule_stream_seed": 101,
+    "source_block": "a",
+    "source_arm": "high",
+    "new_corpus_for_10m": false,
+    "rule_family_and_rollout": "unchanged original GameConfig and trajectory-seed derivation",
+    "grid_size": 12,
+    "num_colors": 10,
+    "saved_frames": 27,
+    "burn_in": 10,
+    "patch_size": 2,
+    "gzip_interval": [0.4, 0.5],
+    "gzip_bin_edges": [0.4, 0.42, 0.44, 0.46, 0.48, 0.5],
+    "train_worlds_by_bin": [2913, 3544, 4034, 4559, 4925],
+    "validation_worlds_by_bin": [45, 42, 49, 57, 63],
+    "train_worlds": 19975,
+    "validation_worlds": 256,
+    "usable_nca_labels_per_world": 987,
+    "usable_nca_labels_total": 19715325,
+    "packed_sequence_length": 1026,
+    "packed_dtype": "int32",
+    "horizontal_score": "adjacent horizontal 2x2 patch-ID copy rate minus sum_id n_id*(n_id-1)/(972*971); no row-boundary pairs",
+    "tier_cutoffs_by_gzip_bin": {
+      "top_50_anchor": [-0.000374227071, -0.000374227071, -0.000374227071, -0.000374227071, -0.000374227071],
+      "top_25": [0.013787809437, 0.009925705543, 0.006992070455, 0.004674553831, 0.003439879976],
+      "top_10": [0.034107767225, 0.025746229122, 0.017753705187, 0.012177637072, 0.008144630498],
+      "top_5_if_gate_passes": null
+    },
+    "cutoff_comparison": ">=",
+    "audit_before_training": [
+      "exact split and gzip-bin quotas",
+      "no duplicate rule ID within a cohort; record intentional overlap across tiers and with the anchor",
+      "score thresholds and full gzip CDF",
+      "int32 shape, markers, masks, 987 scored labels per training world",
+      "packed SHA-256 and pack_one agreement"
+    ]
+  },
+  "model": {
+    "initialization_seed": 0,
+    "base_init_path": "runs/1m-nca-transfer-v2/seeds/seed_0/config/base_random_init/base_random_init.pth",
+    "base_init_sha256": "2e38d52582434ed3169e74f11039d28c0fea7d96944b270ff5c8a146c22b8652",
+    "layers": 4,
+    "heads": 2,
+    "embedding_dim": 20,
+    "context_length": 256,
+    "dropout": 0.0,
+    "tie_embeddings": true,
+    "nca_vocab_size": 10002,
+    "text_vocab_size": 50257,
+    "text_trainable_parameters": 1081177,
+    "body_transfer": "load NCA-pretrained transformer body into the same seed-0 text initialization"
+  },
+  "training": {
+    "backend": "mps",
+    "optimizer": "Adam",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0,
+    "warmup_steps": 100,
+    "scheduler": "linear warmup then cosine decay over each original full stage",
+    "effective_batch": 8,
+    "nca_physical_batch": 8,
+    "text_physical_batch": 4,
+    "order_seed": 17,
+    "training_seed": 23,
+    "nca_steps": 9988,
+    "nca_scored_labels": 19715325,
+    "nca_evaluation_thresholds": [0, 2000000, 4000000, 6000000, 8000000, 10000000, 12000000, 14000000, 16000000, 18000000, 20000000],
+    "text_steps": 4883,
+    "text_scored_tokens": 10000000,
+    "text_evaluation_thresholds": [0, 250000, 500000, 1000000, 2000000, 3000000, 5000000, 7500000, 10000000]
+  },
+  "tinystories": {
+    "tokenizer": "gpt2",
+    "dataset_revision": "f54c09fd23315a6f9c86f9dc80f725de7d8f9c64",
+    "train_path": "runs/1m-nca-transfer-v2/data/tinystories/train.bin",
+    "train_sha256": "fbed8efccdbd42cd9c803f770a6e18da40c3be37461da54106fbac2c7b140ef3",
+    "validation_path": "runs/1m-nca-transfer-v2/data/tinystories/val.bin",
+    "validation_sha256": "851de2118d56178237f2b87270d02803433dd7fb6b4b5c841bb05afb4a5385e5",
+    "training_slice": "saved first 10M scored tokens in fixed shuffled 256-token-window order",
+    "validation_scored_tokens": 262144
+  },
+  "comparison": {
+    "historical_curves": ["seed_0 scratch", "seed_0 ordinary nca_40_50"],
+    "metrics": ["validation loss", "perplexity", "normalized 0-10M AUC", "tokens to common target loss"],
+    "note": "historical controls are not fresh contemporaneous random-corpus controls"
+  }
+}

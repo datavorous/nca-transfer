@@ -1,0 +1,28 @@
+{
+  "crossing_tokens": [
+    627471.868001865,
+    798022.9949490222,
+    883298.5584226009
+  ],
+  "geometric_mean_tokens": 761913.6056665459,
+  "loss_targets": [
+    7.0,
+    6.5,
+    6.25
+  ],
+  "probe_metrics_sha256_by_tier": {
+    "top_10": "37bf2cb2707f68c6789b2309a159593a9f684f031c3ffd379ccef0cdb7b6bf5f",
+    "top_25": "b3fd212e5c8d58357f0e5515ca896b5d4417f3a26fa9a21e01608b5bd600cdd7",
+    "top_50_anchor": "c360ad0c32e58b8f9bb620854ae4e343f155f27c599bd03392de6fee653755d0"
+  },
+  "protocol_sha256": "75b7168325bfc186cef3926d2a1b588cdbd2d11fc75f6bd5647a61b05e3ab172",
+  "ranking": "first downward crossing, geometric mean tokens; within 1% choose less extreme tier",
+  "schema": "nca-boosted-dose-decision-v1",
+  "selected_0_1m_auc": 8.099855165239157,
+  "selected_1m_validation_loss": 5.903554204851389,
+  "selected_checkpoint": "runs/nca-data-search/boosted-nca/sweep-a/top_10/seeds/seed_0/downstream/probe_1m/checkpoints/model_489_iter.pth",
+  "selected_checkpoint_sha256": "a34ccbe9404377e1e755cb53526a55c557f5d1e11af45f5eb49446128118417f",
+  "selected_probe_root": "runs/nca-data-search/boosted-nca/sweep-a/top_10/seeds/seed_0/downstream/probe_1m",
+  "selected_tier": "top_10",
+  "top_5_gate_passed": false
+}

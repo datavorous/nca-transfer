@@ -1,0 +1,94 @@
+{
+  "accepted": {
+    "20_30": 1,
+    "30_40": 2,
+    "40_50": 2,
+    "50_plus": 2
+  },
+  "attempted_rules": 16,
+  "attempted_worlds": 16,
+  "band_intervals": {
+    "20_30": "[0.20,0.30)",
+    "30_40": "[0.30,0.40)",
+    "40_50": "[0.40,0.50)",
+    "50_plus": "[0.50,infinity)"
+  },
+  "chunks": 6,
+  "config": {
+    "batch_size": 8,
+    "burn_in": 10,
+    "conv_channels": 4,
+    "filter_mode": "none",
+    "frames": 27,
+    "grid_size": 12,
+    "groups": 1,
+    "hidden_channels": 16,
+    "identity_bias": 0.0,
+    "max_complexity": 1.0,
+    "max_rule_attempts": 100000,
+    "min_complexity": 0.0,
+    "num_colors": 10,
+    "patch_size": 2,
+    "probe_frames": 10,
+    "rule_count": 100000,
+    "seed": 0,
+    "stride": 1,
+    "temperature": 0.001,
+    "trajectories_per_rule": 1
+  },
+  "config_sha256": "53189e50c580af9330543d7b46314c07fd5a1606b210b79e987fda31480876af",
+  "current_throughput_worlds_per_second": 9.15767688053914,
+  "duplicate_pairs": 0,
+  "duplicate_trajectory_hashes": 0,
+  "elapsed_seconds": 1.670897583999249,
+  "eligible": {
+    "20_30": 1,
+    "30_40": 3,
+    "40_50": 9,
+    "50_plus": 2
+  },
+  "gzip_histogram_0_1_steps": [
+    1,
+    0,
+    1,
+    3,
+    9,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "next_attempt": 16,
+  "process_pid": 5888,
+  "rejected": 9,
+  "schema": "nca-regimes-run-v1",
+  "split_method": "blake2b(rule seed) thresholds 0.8/0.9",
+  "splits": {
+    "20_30": {
+      "test": 0,
+      "train": 1,
+      "validation": 0
+    },
+    "30_40": {
+      "test": 0,
+      "train": 2,
+      "validation": 0
+    },
+    "40_50": {
+      "test": 0,
+      "train": 2,
+      "validation": 0
+    },
+    "50_plus": {
+      "test": 0,
+      "train": 2,
+      "validation": 0
+    }
+  },
+  "storage_bytes": 41846,
+  "target_per_band": 2,
+  "throughput_worlds_per_second": 9.575691624201422,
+  "updated_at_utc": "2026-10-07T17:57:26.270069+00:00"
+}
