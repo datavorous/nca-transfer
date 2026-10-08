@@ -16,8 +16,13 @@ PATTERN = re.compile(
     r"step=\d+/\d+ tokens=(?P<tokens>\d+) train_loss=(?P<loss>[-+\d.eE]+)"
 )
 SEED_PATTERN = re.compile(r"^SEED (?P<seed>[1-4]) ")
-COLORS = {"scratch": "#79818c", "ordinary": "#cc7654", "designed": "#318b89"}
+COLORS = {"scratch": "#C5B5E8", "ordinary": "#F2AF99", "designed": "#91D7C7"}
 LABELS = {"scratch": "Scratch", "ordinary": "Ordinary NCA", "designed": "Designed NCA"}
+BACKGROUND = "#111722"
+PANEL = "#192230"
+TEXT = "#E8EDF4"
+MUTED = "#A9B5C4"
+GRID = "#344255"
 
 
 def read_curves(seed0_log: Path, replication_log: Path) -> dict[tuple[int, str], list[tuple[int, float]]]:
@@ -61,11 +66,14 @@ def draw(axes, curves: dict[tuple[int, str], list[tuple[int, float]]], alpha: fl
          ("scratch", "ordinary", "designed")),
     ):
         axis.clear()
-        axis.set_title(title, loc="left", fontsize=12, pad=8)
-        axis.set_xlabel(xlabel)
-        axis.set_ylabel("Training loss")
-        axis.grid(color="#dce2e6", linewidth=0.8, alpha=0.7)
+        axis.set_facecolor(PANEL)
+        axis.set_title(title, loc="left", fontsize=12, pad=8, color=TEXT)
+        axis.set_xlabel(xlabel, color=TEXT)
+        axis.set_ylabel("Training loss", color=TEXT)
+        axis.tick_params(colors=MUTED)
+        axis.grid(color=GRID, linewidth=0.8, alpha=0.65)
         axis.spines[["top", "right"]].set_visible(False)
+        axis.spines[["bottom", "left"]].set_color(GRID)
         shown = 0
         for arm in arms:
             stage = f"{prefix}/{arm}"
@@ -77,7 +85,7 @@ def draw(axes, curves: dict[tuple[int, str], list[tuple[int, float]]], alpha: fl
             for rows in available.values():
                 x = [tokens / 1_000_000 for tokens, _ in rows]
                 y = [loss for _, loss in rows]
-                axis.plot(x, smooth(y, alpha), color=color, linewidth=1.0, alpha=0.23)
+                axis.plot(x, smooth(y, alpha), color=color, linewidth=1.0, alpha=0.29)
             mean = shared_mean(available)
             if mean:
                 x = [tokens / 1_000_000 for tokens, _ in mean]
@@ -86,11 +94,13 @@ def draw(axes, curves: dict[tuple[int, str], list[tuple[int, float]]], alpha: fl
                           label=f"{LABELS[arm]} ({len(available)}/5)")
             shown += 1
         if shown:
-            axis.legend(frameon=False, loc="upper right", ncol=shown, fontsize=9)
+            legend = axis.legend(frameon=False, loc="upper right", ncol=shown, fontsize=9)
+            for label in legend.get_texts():
+                label.set_color(TEXT)
             axis.margins(x=0.02, y=0.1)
         else:
             axis.text(0.5, 0.5, "Waiting for training logs", ha="center", va="center",
-                      transform=axis.transAxes, color="#88919b")
+                      transform=axis.transAxes, color=MUTED)
 
 
 def replication_ended(events: Path) -> bool:
@@ -132,7 +142,7 @@ def main() -> None:
     import matplotlib.pyplot as plt
 
     fig, axes = plt.subplots(2, 1, figsize=(10, 7), layout="constrained")
-    fig.patch.set_facecolor("white")
+    fig.patch.set_facecolor(BACKGROUND)
     if args.show:
         plt.ion()
         plt.show(block=False)
@@ -147,7 +157,7 @@ def main() -> None:
                 draw(axes, read_curves(args.log, args.replication_log), args.ema)
                 args.output.parent.mkdir(parents=True, exist_ok=True)
                 temporary = args.output.with_name(f".{args.output.stem}.{os.getpid()}.tmp.png")
-                fig.savefig(temporary, dpi=150)
+                fig.savefig(temporary, dpi=150, facecolor=BACKGROUND)
                 os.replace(temporary, args.output)
                 if args.show:
                     fig.canvas.draw_idle()

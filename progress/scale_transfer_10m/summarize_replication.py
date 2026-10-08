@@ -18,8 +18,13 @@ SEEDS=range(5)
 ARMS=("scratch","ordinary","designed")
 TARGETS=(3.0,2.5,2.25,2.0,1.9)
 RANGES=((0,1_000_000),(0,10_000_000),(0,100_000_000),(10_000_000,100_000_000))
-COLORS={"scratch":"#79818c","ordinary":"#cc7654","designed":"#318b89"}
+COLORS={"scratch":"#C5B5E8","ordinary":"#F2AF99","designed":"#91D7C7"}
 LABELS={"scratch":"Scratch","ordinary":"Ordinary NCA","designed":"Designed NCA"}
+BACKGROUND="#111722"
+PANEL="#192230"
+TEXT="#E8EDF4"
+MUTED="#A9B5C4"
+GRID="#344255"
 
 
 def root(seed:int)->Path:
@@ -91,31 +96,36 @@ def table(lines:list[str],headers:list[str],rows:list[list[object]])->None:
 
 def plot(histories:dict[int,dict[str,list[dict]]])->None:
     fig,ax=plt.subplots(figsize=(10.5,6.2),layout="constrained")
+    fig.patch.set_facecolor(BACKGROUND)
     inset=ax.inset_axes([.53,.43,.42,.48])
     for axis in (ax,inset):
-        axis.grid(color="#dce2e6",linewidth=.8,alpha=.7)
+        axis.set_facecolor(PANEL)
+        axis.grid(color=GRID,linewidth=.8,alpha=.65)
         axis.spines[["top","right"]].set_visible(False)
+        axis.spines[["bottom","left"]].set_color(GRID)
+        axis.tick_params(colors=MUTED)
         for arm in ARMS:
             for seed in SEEDS:
                 h=histories[seed][arm]
                 axis.plot([r["tokens"]/1e6 for r in h],
                           [r["validation_loss"] for r in h],
-                          color=COLORS[arm],linewidth=.9,alpha=.17)
+                          color=COLORS[arm],linewidth=.9,alpha=.25)
             tokens=[r["tokens"]/1e6 for r in histories[0][arm]]
             mean=[st.mean(histories[seed][arm][i]["validation_loss"] for seed in SEEDS)
                   for i in range(len(tokens))]
             axis.plot(tokens,mean,color=COLORS[arm],linewidth=2.5,label=LABELS[arm])
     ax.set_xlim(0,100)
-    ax.set_xlabel("TinyStories tokens (M)")
-    ax.set_ylabel("Validation loss")
-    ax.legend(frameon=False,loc="upper right",ncol=3)
+    ax.set_xlabel("TinyStories tokens (M)",color=TEXT)
+    ax.set_ylabel("Validation loss",color=TEXT)
+    legend=ax.legend(frameon=False,loc="upper right",ncol=3)
+    for label in legend.get_texts():label.set_color(TEXT)
     inset.set_xlim(0,10)
     inset.set_ylim(2.0,6.5)
     inset.tick_params(labelsize=8)
     folder=OUT.parent/"figures"
     folder.mkdir(parents=True,exist_ok=True)
-    fig.savefig(folder/"scale_transfer_five_seeds.png",dpi=180)
-    fig.savefig(folder/"scale_transfer_five_seeds.svg")
+    fig.savefig(folder/"scale_transfer_five_seeds.png",dpi=180,facecolor=BACKGROUND)
+    fig.savefig(folder/"scale_transfer_five_seeds.svg",facecolor=BACKGROUND)
     plt.close(fig)
 
 
