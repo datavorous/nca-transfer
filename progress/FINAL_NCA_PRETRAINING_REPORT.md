@@ -1,6 +1,8 @@
 # Final NCA pretraining project report
 
-**Archival closeout, 2026-10-08.** This document consolidates the saved research record and reads existing artifacts only. “Checkpoint” in the tables means a logged evaluation milestone; model/optimizer files were saved at the run boundaries indicated by their receipts. No training was launched for this report. Values are rounded for display; JSON histories linked below retain full precision.
+**Archival closeout, 2026-10-08; scale-transfer update, 2026-10-09.** This document consolidates the saved research record and reads existing artifacts only. “Checkpoint” in the tables means a logged evaluation milestone; model/optimizer files were saved at the run boundaries indicated by their receipts. No training was launched for this report. Values are rounded for display; JSON histories linked below retain full precision.
+
+**Scale-transfer update.** At 9,943,921 language-model parameters and 100M TinyStories tokens, the initial 197.15M-label NCA dose gave Designed an early advantage but both NCA conditions finished behind Scratch. Short 2.001M- and 4.001M-label warm-ups finished modestly ahead of Scratch in the completed seed-0 diagnostic. At the matched 4.001M dose, Designed and Ordinary finished essentially tied (1.85943 versus 1.85922 validation loss). This larger-model result is exploratory and does not replace the five-seed ~1M-model findings below.
 
 ## Scope, units, and independent observations
 
@@ -77,6 +79,8 @@ The port preserves stride-1 fixed-key rollout behavior. The known stride>1 key-s
 | Horizontal replication | A/B/C fresh rule blocks × high/unfiltered/low × five seeds = 45 complete 1M runs. |
 | Dose sweep | Frozen Top-50 anchor, Top-25 and Top-10; predeclared target-loss ranking; Top-5 gate failed. |
 | Designed validation | Seed-0 model resumed to 10M; seeds 1–4 trained to 10M on the frozen Top-10 corpus. |
+| ~10M-model scale transfer | Seed-0 Scratch, Ordinary, and frozen Designed Top-10 trained through 100M TinyStories after 197.153M NCA labels in the latter two; both NCA arms ended behind Scratch. |
+| Paper-ratio switch-dose diagnostic | Same seed-0 100M TinyStories stream after 2.001M/4.001M Designed warm-ups and one matched 4.001M Ordinary warm-up; all three ended ahead of Scratch, with matched Ordinary and Designed effectively tied. |
 
 A vertical lag-6 branch was sampled and audited, with a partial NCA stage and zero-token downstream evaluation, then stopped before any language-learning milestone. Matched-copy, lag-76, new mechanism selectors, and Top-5 were not completed English outcome experiments. Their drafts are hypotheses, not positive results.
 
@@ -3076,6 +3080,55 @@ The selected vertical feature is much more separated than horizontal copy excess
 | [Vertical high / seed0](../runs/nca-data-search/vertical-lag6/block-d/high/seeds/seed_0/downstream/probe_1m/metrics.json) | 0 | 0 | 11.44745 | 93661.77 |
 
 
+## Final scale-transfer study: ~10M parameters, seed 0
+
+The frozen scale-transfer model has **9,943,921 trainable language parameters** (8 layers, 4 heads, width 144, context 256). Scratch, Ordinary 40–50% gzip NCA, and the previously selected Designed Top-10 corpus use the same TinyStories ordering, 100M scored language-token horizon, optimizer family and evaluation checkpoints. At transfer, the NCA input embedding and tied output head are discarded; the Transformer body is loaded into a fresh language-vocabulary model and all parameters are updated. The NCA corpora and selector were not changed. [Frozen configuration](../runs/scale-transfer-10m/config.json); [scale protocol](scale_transfer_10m/README.md).
+
+### Initial 197.153M-label run and ratio correction
+
+The first scale run gave each NCA arm **197,153,250 scored labels**, about **1.972 NCA labels per downstream language token**. Designed began strongly: validation loss at 251,904 TinyStories tokens was **5.37233**, versus Scratch **6.10973**. Its curve crossed from better to worse than Scratch at approximately **5.820M** downstream tokens by linear interpolation. Ordinary showed clear negative transfer throughout the measured language curve. At 100M, both NCA arms were worse than Scratch:
+
+| Condition, 197.153M NCA dose unless Scratch | 251,904 loss | 5M loss | 100M loss | 100M PPL | Normalized 0–100M AUC |
+|:--|--:|--:|--:|--:|--:|
+| Scratch | 6.10973 | 2.79254 | **1.87087** | **6.49** | **2.12974** |
+| Designed Top-10 | **5.37233** | **2.78609** | 1.93157 | 6.90 | 2.17020 |
+| Ordinary 40–50% | 6.23964 | 3.26028 | 2.02375 | 7.57 | 2.35520 |
+
+The dose-to-language ratio was far above that of the [original paper](https://arxiv.org/html/2603.10055v1): its 164M NCA tokens preceded 4B, 9B, or 13B natural-language tokens, corresponding to about **1:24, 1:55, or 1:79** NCA:language. The paper also reports diminishing relative gains with larger models and an intermediate synthetic-token optimum for some generator settings. These observations motivated a **dose diagnostic**, not a claim that ratio alone caused our failed 197M transfer. [Scratch history](../runs/scale-transfer-10m/downstream/scratch/metrics.json); [Designed 197M history](../runs/scale-transfer-10m/downstream/designed/metrics.json); [Ordinary 197M history](../runs/scale-transfer-10m/downstream/ordinary/metrics.json).
+
+### Short NCA switch doses: full seed-0 result
+
+The pivot stopped each arm's original full-stage NCA optimization trajectory after **2,001,179** or **4,001,087** scored labels, then trained on the fixed 100M TinyStories stream. These are early checkpoints under the original 197M-stage learning-rate schedule, **not** independently optimized short runs. The predeclared seed-0 selection rule extended both Designed doses to 100M and chose 4M for one matched Ordinary control. The input corpora were reused without regeneration. In the table, Δ is **Designed 4M minus matched Ordinary 4M**; negative favors Designed.
+
+| TinyStories tokens | Scratch | Designed 2M | Designed 4M | Ordinary 4M | Δ |
+|--:|--:|--:|--:|--:|--:|
+| 0 | 10.94640 | 10.90581 | 10.94587 | 11.02240 | −0.07653 |
+| 251,904 | 6.10973 | 5.74734 | 5.73225 | 5.91276 | −0.18051 |
+| 501,760 | 4.66880 | 4.42798 | 4.43082 | 4.57016 | −0.13934 |
+| 1,001,472 | 3.86646 | 3.71642 | 3.72035 | 3.77165 | −0.05131 |
+| 2,000,896 | 3.31702 | 3.22153 | 3.22836 | 3.25213 | −0.02377 |
+| 3,000,320 | 3.06373 | 2.98997 | 3.00592 | 3.01432 | −0.00840 |
+| 5,001,216 | 2.79254 | 2.74192 | 2.75736 | 2.76268 | −0.00532 |
+| 7,501,824 | 2.59599 | 2.55864 | 2.57501 | 2.57586 | −0.00085 |
+| 10,000,384 | 2.46935 | 2.44106 | 2.45190 | 2.44647 | +0.00544 |
+| 15,001,600 | 2.31982 | 2.30237 | 2.30898 | 2.30313 | +0.00585 |
+| 20,000,768 | 2.22660 | 2.21446 | 2.21360 | 2.20698 | +0.00662 |
+| 30,001,152 | 2.11622 | 2.10408 | 2.10289 | 2.09807 | +0.00482 |
+| 50,001,920 | 1.98364 | 1.97361 | 1.97108 | 1.96578 | +0.00530 |
+| 75,001,856 | 1.89645 | 1.88917 | 1.88455 | 1.88303 | +0.00152 |
+| 100,000,000 | 1.87087 | 1.86405 | 1.85943 | **1.85922** | +0.00021 |
+
+| Condition | NCA:100M-language ratio | 100M loss | 100M PPL | Normalized 0–100M AUC | Tokens to Scratch@100M loss | Downstream-token ratio |
+|:--|--:|--:|--:|--:|--:|--:|
+| Scratch | 0 | 1.87087 | 6.49 | 2.12974 | 100.000M | 1.000x |
+| Designed 2M | 1:49.97 | 1.86405 | 6.45 | 2.11302 | 93.209M | 1.073x |
+| Designed 4M | 1:24.99 | 1.85943 | 6.42 | 2.11233 | 88.612M | 1.129x |
+| Ordinary 4M | 1:24.99 | **1.85922** | **6.42** | **2.11098** | **87.766M** | **1.139x** |
+
+At short doses, **NCA versus Scratch** is a modest persistent seed-0 gain: all three short-dose arms finish below Scratch by 0.00683–0.01165 loss. **Designed versus Ordinary** is different: Designed 4M is better through 7.5M TinyStories tokens, Ordinary is better at every logged checkpoint from 10M onward, and the final Ordinary edge is only **0.00021 loss**. **Dose effects** are visible within Designed: 4M beats 2M at the 100M endpoint by **0.00462 loss**, while both beat the 197M Designed endpoint by much more. First-crossing token ratios use sparse-checkpoint linear interpolation and count downstream tokens only; neither total compute nor elapsed time is included. [Paper-ratio protocol](scale_transfer_10m/PAPER_RATIO_PLAN.md); [complete short-dose analysis](scale_transfer_10m/PAPER_RATIO_RESULTS.md); [early decision](../runs/scale-transfer-10m/paper-ratio/seed_0/early_decision.json); [final decision](../runs/scale-transfer-10m/paper-ratio/seed_0/final_decision.json).
+
+These smaller observed gains at ~10M parameters are **consistent with**, but do not establish, a scale-dependent trend; the model scale, NCA dose, and downstream horizon changed together relative to the ~1M-parameter study. Synthetic warm-up duration clearly matters within this seed-0 protocol, but there is **one ~10M-scale model seed**, no exhaustive dose × scale sweep, no fresh large-scale corpus replication, and no evidence that horizontal recurrence remains the optimal selector at larger scale. Seed 0 selected the short dose, so its selected-dose comparison is exploratory. No mechanism or universal scaling law follows.
+
 ## What we can claim / What we cannot claim
 
 | Supported claim | Boundary / claim to avoid |
@@ -3087,6 +3140,7 @@ The selected vertical feature is much more separated than horizontal copy excess
 | Designed Top-10 reaches each seed’s scratch@10M loss with a 1.995 ± .030x downstream-token convergence speedup; held-out model seeds 1–4 yield 1.998 ± .034x. | The top-10 corpus was selected with seed 0 and not replicated over fresh selected corpora. This is not a total-compute, wall-clock, or NCA-pretraining-adjusted speedup. |
 | The selected corpus improves ordinary 40–50 paired speedup in 5/5 model seeds and has a small 10M endpoint edge. | Seed 0 was used for tier selection; historical ordinary controls were not fresh contemporaneous Top-10-matched corpora. |
 | Horizontal copy is a useful selection policy within the fixed generator and gzip quotas. | Transition MI, lag-2 recurrence, and possibly unmeasured rule properties covary; literal copying is not uniquely identified as causal. |
+| In the completed ~10M-parameter seed-0 study, short 2M/4M NCA warm-ups finish modestly ahead of Scratch; the matched 4M Designed and Ordinary endpoints are effectively tied. | One model seed selected the dose; this does not confirm a larger-scale recurrence advantage, establish a scaling law, or include NCA compute in the downstream-token ratios. |
 
 ## Canonical Results
 
@@ -3103,7 +3157,8 @@ The selected vertical feature is much more separated than horizontal copy excess
 
 The final [five-bar figure](boosted_nca/figures/downstream_convergence_speedup_by_distribution.png) uses the paired metric for all ordinary bands and Designed NCA. The original aggregate 1.646x number should appear only with its separate averaged-curve definition. The strongest research claim is that recurrence-biased selection within the same NCA budget and gzip regime improves downstream sample efficiency; the exact mechanism and out-of-corpus Top-10 generalization remain unresolved.
 
+**Scale-transfer qualification:** the preceding canonical speedups are for the ~1M-parameter, 10M-TinyStories experiment. In the separate ~10M-parameter, 100M-TinyStories seed-0 diagnostic, 4M-label Designed and Ordinary NCA reach Scratch@100M in **88.612M** and **87.766M** downstream tokens, respectively; their 100M losses are **1.85943** and **1.85922**. The 197.153M-label dose finishes worse than Scratch for both arms. These larger-model observations do not revise the five-seed ~1M-model estimates.
+
 ## Audit trail
 
 Primary machine-readable artifacts: [original five-seed summary](../runs/1m-nca-transfer-v2/summary/summary.json), [horizontal 45-run index](nca_search/replication_1m.csv), [horizontal crossing grid](nca_search/horizontal_tokens_to_target.json), [boosted sampling audit](../runs/nca-data-search/boosted-nca/sweep-a/audit.json), [frozen tier decision](../runs/nca-data-search/boosted-nca/decision.json), [paired-speedup plot data](boosted_nca/figures/downstream_convergence_speedup_by_distribution.json), and per-run `metrics.json` paths transcribed in the checkpoint ledger. Precision conflicts should be resolved against those logged JSON values; rounding and historical snapshot text in source reports do not supersede completed-run receipts.
-
