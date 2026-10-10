@@ -1,0 +1,44 @@
+{
+  "blocks": {
+    "a": {
+      "attempts": 2018560,
+      "packed_sha256_by_arm": {
+        "designed": "e34d0b6e1a39b9400f76b097a895774c9edec6c484fba694e6f9a6e3577bbdef",
+        "ordinary": "814ab3d6a3675da631649cfa053bada50ae18d43448e97718f2d06c01d718156"
+      },
+      "selected_per_arm": {
+        "designed": 20231,
+        "ordinary": 20231
+      }
+    },
+    "b": {
+      "attempts": 2038208,
+      "packed_sha256_by_arm": {
+        "designed": "bbd180be1dbb7c85dfcbd86ad3a947d248ac99acd4d81093674a36690183d283",
+        "ordinary": "c7af17a1db7c5b563e4fa416e038a6b6a8dea7a10ab6bcf0b08ed12726a06fb2"
+      },
+      "selected_per_arm": {
+        "designed": 20231,
+        "ordinary": 20231
+      }
+    },
+    "c": {
+      "attempts": 1994240,
+      "packed_sha256_by_arm": {
+        "designed": "33444f268e1ee8aea236e83c41207610140aac0e92239ebfbfac5187a5086e1d",
+        "ordinary": "14b6151346a7df549bd52c98ef4e51562dd71c64a1217ec760873acdde408dfa"
+      },
+      "selected_per_arm": {
+        "designed": 20231,
+        "ordinary": 20231
+      }
+    }
+  },
+  "cross_block_or_arm_overlap": 0,
+  "earlier_rule_count": 388748,
+  "earlier_selected_overlap": 0,
+  "protocol_sha256": "0f7e47742134dc5393351260a2ac49a35d1875296b1b9200439253445a421262",
+  "sampler_sha256": "39cd3b5b0a3dd38c76d003519fa18afabefed5f3d53731b29c5948cdb23fd7fb",
+  "schema": "nca-top10-confirmation-audit-v1",
+  "selected_total": 121386
+}

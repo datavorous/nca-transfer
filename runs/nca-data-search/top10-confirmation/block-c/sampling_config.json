@@ -1,0 +1,66 @@
+{
+  "arm_hash_person": "nca-confirm",
+  "arms": [
+    "designed",
+    "ordinary"
+  ],
+  "block": "c",
+  "cutoffs_by_gzip_bin": [
+    0.034107767225,
+    0.025746229122,
+    0.017753705187,
+    0.012177637072,
+    0.008144630498
+  ],
+  "game": {
+    "batch_size": 64,
+    "burn_in": 10,
+    "conv_channels": 4,
+    "filter_mode": "none",
+    "frames": 27,
+    "grid_size": 12,
+    "groups": 1,
+    "hidden_channels": 16,
+    "identity_bias": 0.0,
+    "max_complexity": 1.0,
+    "max_rule_attempts": 100000,
+    "min_complexity": 0.0,
+    "num_colors": 10,
+    "patch_size": 2,
+    "probe_frames": 10,
+    "rule_count": 64,
+    "seed": 8303,
+    "stride": 1,
+    "temperature": 0.001,
+    "trajectories_per_rule": 1
+  },
+  "gzip_edges": [
+    0.4,
+    0.42,
+    0.44,
+    0.46,
+    0.48,
+    0.5
+  ],
+  "max_attempts": 8000000,
+  "quotas_per_arm": [
+    [
+      2913,
+      3544,
+      4034,
+      4559,
+      4925
+    ],
+    [
+      45,
+      42,
+      49,
+      57,
+      63
+    ]
+  ],
+  "reference_sha256": "1ba5e8ce68c70faf19183170ac107959d5348e8db220898baa20bb9668d7ffbf",
+  "schema": "nca-top10-confirmation-sampling-v1",
+  "split_hash_person": "nca-split",
+  "stream_seed": 8303
+}

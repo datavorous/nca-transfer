@@ -41,7 +41,7 @@ Follow the short scripts in [examples](examples/README.md), or run the complete 
 uv run --locked --package sampleeff-nca-pre-pretraining python examples/reproduce_tiny.py runs/my-tiny-reproduction
 ```
 
-[Architecture](docs/ARCHITECTURE.md) · [Data contract](docs/DATA_CONTRACT.md) · [Upstream provenance](docs/UPSTREAM.md) · [Reproduction notes](docs/REPRODUCTION.md)
+[Architecture](docs/ARCHITECTURE.md) · [Data contract](docs/DATA_CONTRACT.md) · [Upstream provenance](docs/UPSTREAM.md) · [Reproduction notes](docs/REPRODUCTION.md) · [Figure visual grammar](docs/VISUAL_GRAMMAR.md)
 
 | Status | Result |
 | --- | --- |

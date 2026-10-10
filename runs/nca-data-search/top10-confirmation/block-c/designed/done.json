@@ -1,0 +1,38 @@
+{
+  "arm": "designed",
+  "attempts": 1994240,
+  "block": "block-c",
+  "cutoffs_by_bin": [
+    0.034107767225,
+    0.025746229122,
+    0.017753705187,
+    0.012177637072,
+    0.008144630498
+  ],
+  "gzip_bin_counts": [
+    [
+      2913,
+      3544,
+      4034,
+      4559,
+      4925
+    ],
+    [
+      45,
+      42,
+      49,
+      57,
+      63
+    ]
+  ],
+  "gzip_ratio_mean": 0.45441075078725496,
+  "packed_sha256": "33444f268e1ee8aea236e83c41207610140aac0e92239ebfbfac5187a5086e1d",
+  "patch_copy_excess_mean": 0.03352952761830572,
+  "sampling_config_sha256": "6becb45d868eab82fbeefc57df6c553586ac7923a297deb0c9dea7b1aa959537",
+  "schema": "nca-top10-confirmation-arm-v1",
+  "selected": 20231,
+  "stream_seed": 8303,
+  "train_usable_tokens": 19715325,
+  "train_worlds": 19975,
+  "validation_worlds": 256
+}
