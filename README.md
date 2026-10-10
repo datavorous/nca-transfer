@@ -1,6 +1,6 @@
 # NCA Transfer
 
-Generate neural cellular automata (NCA) trajectories, pretrain a small Transformer on them, and measure how that changes later language learning. This repository contains the standalone NCA generator, training code, experiment reports, and our paper, [Sampling Better Neural Cellular Automata for Pretraining](paper/Sampling%20Better%20Neural%20Cellular%20Automata%20for%20Pretraining/main.pdf).
+Generate neural cellular automata (NCA) trajectories, pretrain a small Transformer on them, and measure how that changes later language learning. This repository contains the standalone NCA generator, training code, experiment reports, and our paper, [Sampling Better Neural Cellular Automata for Pretraining](https://openreview.net/forum?id=1ZNvqddAw7).
 
 The project builds on [Training Language Models via Neural Cellular Automata](https://arxiv.org/abs/2603.10055). Our experiments study whether selecting NCA worlds by horizontal recurrence improves transfer within a fixed gzip range.
 
@@ -16,7 +16,7 @@ The [NCA package](packages/nca/README.md) can generate trajectories on its own. 
 
 ## Results and source
 
-- [Paper PDF](paper/Sampling%20Better%20Neural%20Cellular%20Automata%20for%20Pretraining/main.pdf) and [LaTeX source](paper/Sampling%20Better%20Neural%20Cellular%20Automata%20for%20Pretraining/main.tex)
+- [Paper on OpenReview](https://openreview.net/forum?id=1ZNvqddAw7) and [LaTeX source](paper/Sampling%20Better%20Neural%20Cellular%20Automata%20for%20Pretraining/main.tex)
 - [Complete experiment report](progress/FINAL_NCA_PRETRAINING_REPORT.md)
 - [Architecture](docs/ARCHITECTURE.md), [data contract](docs/DATA_CONTRACT.md), and [reproduction notes](docs/REPRODUCTION.md)
 
