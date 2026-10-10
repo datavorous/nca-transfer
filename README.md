@@ -1,58 +1,23 @@
-# SampleEff
+# NCA Transfer
 
-This uv workspace separates synthetic neural cellular automata (NCA) trajectory generation from transformer pre-pre-training and downstream language training. It adapts [Training Language Models via Neural Cellular Automata](https://arxiv.org/abs/2603.10055); the source revision and known differences are in [upstream provenance](docs/UPSTREAM.md).
+Generate neural cellular automata (NCA) trajectories, pretrain a small Transformer on them, and measure how that changes later language learning. This repository contains the standalone NCA generator, training code, experiment reports, and our paper, [Sampling Better Neural Cellular Automata for Pretraining](paper/Sampling%20Better%20Neural%20Cellular%20Automata%20for%20Pretraining/main.pdf).
 
-| Package | Python import | Responsibility |
-| --- | --- | --- |
-| [NCA](packages/nca) | `nca` | Configure zero-player games; generate, save, analyze, and visualize raw trajectories |
-| [NCA pre-pre-training](packages/pre-pre-training) | `sampleeff_nca_pretraining` | Pack saved trajectories and train a transformer |
-| [Shared](packages/shared) | `sampleeff_shared` | Transformer and checkpoint utilities |
-| [Downstream pretraining](packages/downstream-pretraining) | `sampleeff_downstream` | Other datasets, continued language training, evaluation |
+The project builds on [Training Language Models via Neural Cellular Automata](https://arxiv.org/abs/2603.10055). Our experiments study whether selecting NCA worlds by horizontal recurrence improves transfer within a fixed gzip range.
 
-The artifact flow is **raw v1 trajectories → packed tokens → model checkpoint → downstream training**. NCA generation can be used on its own.
+## Start here
 
-## Install and try it
-
-Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then from this repository root:
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then run the small NCA example from the repository root:
 
 ```sh
-uv sync --package sampleeff-nca-pre-pretraining
 uv run --locked --package sampleeff-nca python main.py
 ```
 
-The Python API is the primary interface:
+The [NCA package](packages/nca/README.md) can generate trajectories on its own. It also has optional controls for horizontal recurrence and neural-rule optimization. The training packages live in [`packages/`](packages/), and runnable examples are in [`examples/`](examples/README.md).
 
-```python
-from nca import GameConfig, NCAGenerator, TrajectoryDataset
+## Results and source
 
-config = GameConfig(grid_size=4, num_colors=3, rule_count=3, frames=4)
-NCAGenerator(config).save("runs/example/raw")
-worlds = TrajectoryDataset.load("runs/example/raw")
-print(len(worlds), worlds[0]["states"].shape)
-```
+- [Paper PDF](paper/Sampling%20Better%20Neural%20Cellular%20Automata%20for%20Pretraining/main.pdf) and [LaTeX source](paper/Sampling%20Better%20Neural%20Cellular%20Automata%20for%20Pretraining/main.tex)
+- [Complete experiment report](progress/FINAL_NCA_PRETRAINING_REPORT.md)
+- [Architecture](docs/ARCHITECTURE.md), [data contract](docs/DATA_CONTRACT.md), and [reproduction notes](docs/REPRODUCTION.md)
 
-The raw writer refuses to overwrite a dataset. Choose a new output path for another generation run.
-
-## Research workflow
-
-Follow the short scripts in [examples](examples/README.md), or run the complete tiny machinery check with a new output directory:
-
-```sh
-uv run --locked --package sampleeff-nca-pre-pretraining python examples/reproduce_tiny.py runs/my-tiny-reproduction
-```
-
-[Architecture](docs/ARCHITECTURE.md) · [Data contract](docs/DATA_CONTRACT.md) · [Upstream provenance](docs/UPSTREAM.md) · [Reproduction notes](docs/REPRODUCTION.md) · [Figure visual grammar](docs/VISUAL_GRAMMAR.md)
-
-The final paper is in [Sampling Better Neural Cellular Automata for Pretraining](paper/Sampling%20Better%20Neural%20Cellular%20Automata%20for%20Pretraining/main.pdf), with its [LaTeX source](paper/Sampling%20Better%20Neural%20Cellular%20Automata%20for%20Pretraining/main.tex) and figure scripts alongside it.
-
-| Status | Result |
-| --- | --- |
-| NCA generation | Working |
-| Raw v1 save/load and replay | Working |
-| Original patch packing equivalence | Working for the tested fixture |
-| Tiny transformer smoke reproduction | Working; same-world loss decreases |
-| Downstream sample-efficiency reproduction | One-seed exploratory run completed; five-seed replication launched |
-
-The tiny run checks pipeline mechanics and checkpoint reload. Its validation examples are also training examples, so it is not a held-out research result.
-
-Experiment orchestration is in [examples/transfer_1m.py](examples/transfer_1m.py) and [examples/replicate_1m.py](examples/replicate_1m.py). Generated datasets, checkpoints, and results live under `runs/` and are excluded from Git.
+Generated datasets and model checkpoints stay in `runs/` and are excluded from Git.
