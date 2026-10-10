@@ -1,0 +1,81 @@
+{
+  "conditions": {
+    "0.0": {
+      "cell_change_mean": 0.5714295650819089,
+      "gzip_40_50_worlds": 44,
+      "gzip_mean": 0.34589468664266115,
+      "horizontal_excess_mean": 0.022682333275412192,
+      "within_gzip_40_50": {
+        "cell_change_mean": 0.6968240093240092,
+        "gzip_mean": 0.45048283763561536,
+        "horizontal_excess_mean": 0.004051596562181298,
+        "horizontal_excess_median": -0.0005706644967429951,
+        "vertical_excess_mean": 0.0017508109280623303
+      },
+      "worlds": 192
+    },
+    "0.01": {
+      "cell_change_mean": 0.5643418358262108,
+      "gzip_40_50_worlds": 42,
+      "gzip_mean": 0.34599381644375854,
+      "horizontal_excess_mean": 0.0334891023494792,
+      "within_gzip_40_50": {
+        "cell_change_mean": 0.721083892958893,
+        "gzip_mean": 0.4564900548696844,
+        "horizontal_excess_mean": 0.015026408608816969,
+        "horizontal_excess_median": 0.011051777260725652,
+        "vertical_excess_mean": 3.522695096864524e-05
+      },
+      "worlds": 192
+    },
+    "0.03": {
+      "cell_change_mean": 0.5640107505341881,
+      "gzip_40_50_worlds": 49,
+      "gzip_mean": 0.3503140003429355,
+      "horizontal_excess_mean": 0.057940211256761597,
+      "within_gzip_40_50": {
+        "cell_change_mean": 0.6956654456654457,
+        "gzip_mean": 0.45374569580918783,
+        "horizontal_excess_mean": 0.03609739988861497,
+        "horizontal_excess_median": 0.0327438091484321,
+        "vertical_excess_mean": 0.0006224691755890155
+      },
+      "worlds": 192
+    },
+    "0.05": {
+      "cell_change_mean": 0.5626933649394587,
+      "gzip_40_50_worlds": 50,
+      "gzip_mean": 0.3483555169753087,
+      "horizontal_excess_mean": 0.07236737824905808,
+      "within_gzip_40_50": {
+        "cell_change_mean": 0.7126175213675213,
+        "gzip_mean": 0.4594135802469136,
+        "horizontal_excess_mean": 0.05341774844990315,
+        "horizontal_excess_median": 0.050425932283124184,
+        "vertical_excess_mean": 0.0020103410424957514
+      },
+      "worlds": 192
+    },
+    "0.1": {
+      "cell_change_mean": 0.5697852675391738,
+      "gzip_40_50_worlds": 54,
+      "gzip_mean": 0.33979150591563784,
+      "horizontal_excess_mean": 0.1184568426586368,
+      "within_gzip_40_50": {
+        "cell_change_mean": 0.7124287749287752,
+        "gzip_mean": 0.4588191586648376,
+        "horizontal_excess_mean": 0.10009102566094849,
+        "horizontal_excess_median": 0.09818735087072425,
+        "vertical_excess_mean": 0.0007311719801071495
+      },
+      "worlds": 192
+    }
+  },
+  "design": "original neural update plus simultaneous left-neighbor 2x2 patch copy",
+  "gzip_band": [
+    0.4,
+    0.5
+  ],
+  "rules": 192,
+  "seed": 8123
+}

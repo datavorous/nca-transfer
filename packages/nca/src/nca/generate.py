@@ -47,9 +47,9 @@ def _rollout(game: Game, config: GameConfig, frames: int):
     return jax.jit(run)
 
 
-def sample_rules(config: GameConfig) -> np.ndarray:
+def sample_rules(config: GameConfig, *, game: Game | None = None) -> np.ndarray:
     """Return reproducible PRNG keys for accepted NCA transition rules."""
-    game = Game(config)
+    game = Game(config) if game is None else game
     probe = _rollout(game, config, config.probe_frames) if config.filter_mode != "none" else None
     cursor = jax.random.PRNGKey(config.seed)
     accepted = []
@@ -75,12 +75,13 @@ def sample_rules(config: GameConfig) -> np.ndarray:
     )
 
 
-def generate(config: GameConfig, rule_seeds: np.ndarray | None = None):
+def generate(config: GameConfig, rule_seeds: np.ndarray | None = None,
+             *, game: Game | None = None):
     """Yield trajectory batches without holding the whole dataset in memory."""
-    rules = sample_rules(config) if rule_seeds is None else np.asarray(rule_seeds)
+    game = Game(config) if game is None else game
+    rules = sample_rules(config, game=game) if rule_seeds is None else np.asarray(rule_seeds)
     if rules.shape != (config.rule_count, 2):
         raise ValueError(f"rule_seeds must have shape ({config.rule_count}, 2)")
-    game = Game(config)
     rollout = _rollout(game, config, config.frames)
     states = []
     ids = []

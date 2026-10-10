@@ -13,6 +13,21 @@ from .config import GameConfig
 UPSTREAM_COMMIT = "bdd1c71e04eb2e5a2c91481faf278e95846b4431"
 
 
+def implementation_metadata() -> dict:
+    """Default provenance for the unmodified upstream-style neural update."""
+    return {
+        "source": "https://github.com/danihyunlee/nca-pre-pretraining",
+        "upstream_commit": UPSTREAM_COMMIT,
+        "jax": jax.__version__,
+        "flax": version("flax"),
+        "backend": jax.default_backend(),
+        "neighborhood": "3x3 Moore, periodic wrap boundary",
+        "network": "3x3 conv -> 1x1 conv -> ReLU -> 1x1 conv",
+        "initial_state": "one categorical draw per cell from grid-shared random logits",
+        "seed_derivation": "rule: successive jax.random.split from config seed; initial: fold_in(rule_seed, trajectory_id + 1)",
+    }
+
+
 def save(config: GameConfig, output: str | Path) -> Path:
     """Write trajectories and replay metadata to a new directory."""
     from .generate import generate, sample_rules
@@ -22,7 +37,7 @@ def save(config: GameConfig, output: str | Path) -> Path:
 
 
 def save_batches(config: GameConfig, output: str | Path, rules: np.ndarray,
-                 batches) -> Path:
+                 batches, *, implementation: dict | None = None) -> Path:
     """Write already-generated batches using the unchanged version 1 schema."""
     output = Path(output)
     if output.exists():
@@ -65,21 +80,15 @@ def save_batches(config: GameConfig, output: str | Path, rules: np.ndarray,
     manifest = {
         "schema_version": 1,
         "config": asdict(config),
-        "implementation": {
-            "source": "https://github.com/danihyunlee/nca-pre-pretraining",
-            "upstream_commit": UPSTREAM_COMMIT,
-            "jax": jax.__version__,
-            "flax": version("flax"),
-            "backend": jax.default_backend(),
-            "neighborhood": "3x3 Moore, periodic wrap boundary",
-            "network": "3x3 conv -> 1x1 conv -> ReLU -> 1x1 conv",
-            "initial_state": "one categorical draw per cell from grid-shared random logits",
-            "seed_derivation": "rule: successive jax.random.split from config seed; initial: fold_in(rule_seed, trajectory_id + 1)",
-        },
+        "implementation": implementation_metadata(),
         "shape": [config.frames, config.grid_size, config.grid_size, config.groups],
         "frame_times": [config.burn_in + i * config.stride for i in range(config.frames)],
         "rules": "rules.npy",
         "shards": shards,
     }
+    if implementation is not None:
+        if set(implementation) != set(manifest["implementation"]):
+            raise ValueError("implementation must preserve version 1 metadata keys")
+        manifest["implementation"].update(implementation)
     (output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     return output
