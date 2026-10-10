@@ -43,6 +43,8 @@ uv run --locked --package sampleeff-nca-pre-pretraining python examples/reproduc
 
 [Architecture](docs/ARCHITECTURE.md) · [Data contract](docs/DATA_CONTRACT.md) · [Upstream provenance](docs/UPSTREAM.md) · [Reproduction notes](docs/REPRODUCTION.md) · [Figure visual grammar](docs/VISUAL_GRAMMAR.md)
 
+The final paper is in [Sampling Better Neural Cellular Automata for Pretraining](paper/Sampling%20Better%20Neural%20Cellular%20Automata%20for%20Pretraining/main.pdf), with its [LaTeX source](paper/Sampling%20Better%20Neural%20Cellular%20Automata%20for%20Pretraining/main.tex) and figure scripts alongside it.
+
 | Status | Result |
 | --- | --- |
 | NCA generation | Working |

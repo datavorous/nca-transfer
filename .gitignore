@@ -16,6 +16,12 @@ __pycache__/
 /.coverage
 /htmlcov/
 *.log
+*.aux
+*.bbl
+*.blg
+*.out
+*.synctex.gz
+*.xdv
 .ipynb_checkpoints/
 /data/
 /outputs/
